@@ -1,3 +1,4 @@
+# Topic 2 - Nội dung tìm hiểu
 ## SSL
 ### Định nghĩa
 SSL (Secure socket layer) là một giao thức bảo mật dựa trên mã hóa được sự dụng với mục đích đảm bảo riêng tư, xác thực và tính toàn vẹn dữ liệu.
