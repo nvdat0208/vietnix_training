@@ -283,4 +283,28 @@ server {
 - Lưu file và khởi động lại dịch vụ
 	```
  	systemctl restart vsftpd
-- Tạo tài khoản ftp
+- Tạo tài khoản ftp và phân quyền
+```
+useradd ftp_dat
+usermod -d /var/www/dat/ ftp_dat
+chown -R ftp_dat:ftp_dat /var/www/dat/
+chmod -R 755 /var/www/dat/
+```
+# 8. Bật remote Mysql cho root trên MariaDB
+- Đăng nhập vào MariaDB với tư cách người dùng root
+```
+mysql -u root -p
+```
+
+- Tạo một người dùng root mới, ở đây là root_remote
+```
+CREATE USER 'root_remote'@'%' IDENTIFIED BY 'P@ssW0rd';
+```
+
+- Cấp quyền cho root_remote
+```
+GRANT ALL PRIVILEGES ON *.* TO 'root_remote'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+
+- Thoát khỏi MariaDB bằng lệnh ``exit``
