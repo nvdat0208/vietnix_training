@@ -162,19 +162,19 @@ server {
 - Truy cập web sẽ hiện giao diện của Laravel
 ![Giao diện Laravel](/image/laravel.png)
 
-# Cài SSL cho 2 domain với ZeroSSL
-## 1. Đăng ký tài khoản ZeroSSL
+# 6. Cài SSL cho 2 domain với ZeroSSL
+## 6.1. Đăng ký tài khoản ZeroSSL
 - Truy cập www.sslforfree.com để đăng ký 1 tài khoản
 ![Giao diện ssl1](/image/ssl1.png)
 
-## 2. Tạo chứng chỉ SSL
+## 6.2. Tạo chứng chỉ SSL
 - Chọn New certificates
 - Validity: chọn thời hạn 90 ngày
 - CSR & Contact: chọn Auto-Generate để hệ thống tự tạo CSR
 - Domains: nhập domain. sau đó bấm Next Step
 ![Giao diện ssl1](/image/ssl2.png)
 
-## 3. Xác thực tên miền
+## 6.3. Xác thực tên miền
 - Chọn xác thực bằng file upload
 - Tải Auth file từ trang web
 - Lưu Auth file vào thư mục /.well-known/pki-validation/, thư mục này sẽ bên trong thư mục source web
@@ -183,11 +183,11 @@ server {
 
 ![Giao diện ssl1](/image/ssl4.png)
 
-## 4. Tải xuống chứng chỉ
+## 6.4. Tải xuống chứng chỉ
 - Sau khi xác thực hoàn tất.
 ![Giao diện ssl1](/image/ssl5.png)
 
-## 5. Cài đặt chứng chỉ trên hosting
+## 6.5. Cài đặt chứng chỉ trên hosting
 - Sau khi xác thực, bấm Download Certificate để tải chứng chỉ cài đặt SSL cho domain
 ![Giao diện ssl1](/image/ssl6.png)
 
@@ -247,9 +247,40 @@ server {
     }
 }
 ```
+- Mở port trên firewall cho phép SSL
+    ```
+  	iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 - Sau khi lưu file, hãy kiểm tra cú pháp để đảm bảo không có lỗi và khởi động lại dịch vụ Nginx.
 	```
  	sudo nginx -t
 	sudo systemctl restart nginx
 - Truy cập vào website để kiểm tra
 ![Giao diện ssl1](/image/ssl8.png)
+
+- Thao tác cấu hình SSL tương tự cho Worldpress
+# 7. Tạo tài khoản FTP
+- Cài đặt vsftp
+	```
+ 	apt install vsftpd -y
+ - Mở port cho phép dịch vụ ftp
+   	```
+    iptables -I INPUT -p tcp --dport 21 -j ACCEPT
+- Cấu hình ftp cơ bản
+	```
+ 	nano /etc/vsftpd.conf
+ ``listen=YES``
+ 
+``listen_ipv6=YES``
+ 
+``anonymous_enable=NO``
+ 
+``local_enable=YES``
+ 
+``write_enable=YES``
+ 
+``chroot_local_user=YES``
+
+- Lưu file và khởi động lại dịch vụ
+	```
+ 	systemctl restart vsftpd
+- Tạo tài khoản ftp
