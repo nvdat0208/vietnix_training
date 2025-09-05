@@ -19,4 +19,4 @@
     ```
   	iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 - Truy cập sẽ hiện giao diện mặc định của nginx
-<img>
+![Giao diện Nginx]()
