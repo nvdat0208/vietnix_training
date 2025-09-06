@@ -246,11 +246,12 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
 - Tìm file `abc` và đặt quyền read only: ``find /home/dat/ -name "abc" -exec chmod 444 {} +``
 
 ## Cp Command:
-- Copy file:
-- Copy folder:
+- Copy file: ``mv [tên/đường dẫn file][tên/đường dẫn của file mới]``
+- Copy folder: ``mv [tên/đường dẫn file][tên/đường dẫn của file mới]``
 
 ## Mv Command:
-- Di chuyển/đổi tên file/folder:
+- Di chuyển/đổi tên file/folder: ``mv [tên/đường dẫn của file][tên/đường dẫn mới của file]``
+- Di chuyển/đổi tên file/folder: ``mv [tên/đường dẫn file hiện tại][tên/đường dẫn mới của file]``
 
 ## Cut Command:
 - Lấy ký tự thứ `<n>`.
@@ -277,17 +278,48 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
 - Ví dụ về Sym Link và Hard Link.
 
 ## Ls Command:
-- Liệt kê file/thư mục.
-- Liệt kê file/thư mục và thuộc tính.
-- Show file ẩn.
+- Liệt kê file/thư mục.: ``ls``
+- Liệt kê file/thư mục và thuộc tính: ``ls -l hoặc ll``
+- Show file ẩn: `ls -a``
 
 ## Ps Command:
-- Show tiến trình.
-- Kill tiến trình.
+- Show tiến trình: ``ps -e``
+- Kill tiến trình: ``kill -9 PID``
 
 ## Top Command:
-- Kiểm tra tài nguyên CPU.
-- Giải thích các thông số.
+- Kiểm tra tài nguyên CPU: ``top``
+```
+op - 10:44:14 up  2:11,  1 user,  load average: 0,27, 0,50, 0,45
+Tasks: 318 total,   1 running, 317 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0,7 us,  2,1 sy,  0,0 ni, 97,2 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+MiB Mem :  15848,4 total,   9927,1 free,   2427,0 used,   3494,4 buff/cache
+MiB Swap:   2048,0 total,   2048,0 free,      0,0 used.  12618,3 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   6631 dat       20   0   16084   4352   3584 R  12,5   0,0   0:00.02 top
+      1 root      20   0  166964  11460   8132 S   0,0   0,1   0:02.33 systemd
+      2 root      20   0       0      0      0 S   0,0   0,0   0:00.01 kthreadd
+      3 root      20   0       0      0      0 S   0,0   0,0   0:00.00 pool_workqueue_release
+      4 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-rcu_g
+      5 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/R-rcu_p
+```
+
+- Giải thích các thông số:
+	``PID``: ID của tiến trình.
+
+	``USER``: Tên người dùng sở hữu tiến trình.
+
+	``PR (priority)``: Mức độ ưu tiên của tiến trình.
+
+	``S (status)``: Trạng thái của tiến trình (e.g., S = sleeping, R = running).
+
+	``%CPU``: Phần trăm CPU mà tiến trình đang sử dụng.
+
+	``%MEM``: Phần trăm RAM mà tiến trình đang sử dụng.
+
+	``TIME+``: Tổng thời gian CPU mà tiến trình đã sử dụng.
+
+	``COMMAND``: Tên của lệnh hoặc chương trình.
 
 ## Free Command:
 - Giải thích các thông số về RAM: ``free -h``
