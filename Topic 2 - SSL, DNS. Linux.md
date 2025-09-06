@@ -224,3 +224,74 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
 ### Wc
 - Đếm số dòng: wc -l [file]
 - Đếm số ký tự: wc -m [file]
+
+### Chmod, Chown, Chattr
+- Sử dụng chmod để phân quyền bằng số và chữ
+  
+  ``read=4 hoặc r, write=2 hoặc w, executive=1 hoặc x, u=owner, g=group, o=other``
+  
+  ``chmod 755 file.txt`` : gán quyền rwx(7) cho chủ sở hữu file, quyền wx(5) cho group và other
+  
+  ``chmod u+rwx, go+rwx file.txt`` : tương tự như gán quyền bằng số, quyền rwx cho chủ sở hữu file, quyền wx cho group và other
+- Sử dụng chown để thay đổi owner user/group cho tệp/thư mục
+
+  ``chown [user] [file/thư mục] hoặc chown [user]:[group] [file/thư mục]``
+- Sử dụng chattr để set immutable attribute - file sẽ không bị thay đổi, chỉnh sửa ngoại trừ root có thể thao tác
+  ``chattr +i file.txt``
+
+### Find Command:
+- Tìm file đuôi `.log`: ``find *.log /var/log/`` tìm tất cả các file đuôi .log trong thư mục /var/log/
+- Tìm folder tên `abc`: ``find /home/dat/ -type d -name "abc"``
+- Tìm file tên `abc`: ``find /home/dat/ -name "abc"``
+- Tìm file `abc` và đặt quyền read only: ``find /home/dat/ -name "abc" -exec chmod 444 {} +``
+
+## Cp Command:
+- Copy file:
+- Copy folder:
+
+## Mv Command:
+- Di chuyển/đổi tên file/folder:
+
+## Cut Command:
+- Lấy ký tự thứ `<n>`.
+- Lấy từ ký tự `<n>` trở về sau.
+- Lấy đến ký tự thứ `<n>`.
+
+## Dig Command:
+ - Kiểm tra record A, MX, NS.
+ - Kiểm tra record A, MX, NS với custom DNS.
+
+## Tar/Zip/Unzip Command:
+- Nén/giải nén `tar.gz`.
+- Nén/giải nén `.zip`.
+
+## Mount/Umount Command:
+- Thêm ổ cứng `sdb` ~ 5gb.
+- Kiểm tra số lượng ổ cứng.
+- Mount vào `/mnt/test`.
+- Umount `/mnt/test`.
+
+## Symbolic Links, Hard Links Command:
+- Định nghĩa Sym Link.
+- Định nghĩa Hard Link.
+- Ví dụ về Sym Link và Hard Link.
+
+## Ls Command:
+- Liệt kê file/thư mục.
+- Liệt kê file/thư mục và thuộc tính.
+- Show file ẩn.
+
+## Ps Command:
+- Show tiến trình.
+- Kill tiến trình.
+
+## Top Command:
+- Kiểm tra tài nguyên CPU.
+- Giải thích các thông số.
+
+## Free Command:
+- Giải thích các thông số về RAM.
+
+## Df Command:
+- Xem dung lượng disk.
+- Phân vùng `/` là gì.
