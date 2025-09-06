@@ -273,12 +273,33 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
    ```
 
 ## Tar/Zip/Unzip Command:
-- Nén/giải nén `tar.gz`.
-- Nén/giải nén `.zip`.
-
+- Nén/giải nén `tar.gz`
+  ```
+  tar -czvf archive.tar.gz file.txt
+  tar -xzvf archive.tar.gz
+  ```
+- Nén/giải nén `.zip`:
+  ```
+  zip -r archive.zip file.txt
+  unzip archive.zip
+  ```
 ## Mount/Umount Command:
 - Thêm ổ cứng `sdb` ~ 5gb.
-- Kiểm tra số lượng ổ cứng.
+- Kiểm tra số lượng ổ cứng: ``lsblk``
+  ```
+	  NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+	loop0     7:0    0 63.2M  1 loop /snap/core20/1695
+	loop1     7:1    0  103M  1 loop /snap/lxd/23541
+	loop2     7:2    0 49.6M  1 loop /snap/snapd/17883
+	loop3     7:3    0 89.4M  1 loop /snap/lxd/31333
+	loop4     7:4    0 50.8M  1 loop /snap/snapd/25202
+	loop5     7:5    0 63.8M  1 loop /snap/core20/2599
+	sr0      11:0    1    4M  0 rom  
+	vda     252:0    0   60G  0 disk 
+	├─vda1  252:1    0 59.9G  0 part /
+	├─vda14 252:14   0    4M  0 part 
+	└─vda15 252:15   0  106M  0 part /boot/efi
+  ```
 - Mount vào `/mnt/test`.
 - Umount `/mnt/test`.
 
@@ -293,11 +314,12 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
   	  lrwxrwxrwx  1 root root    9 Thg 9   6 11:48 symlink_file.txt -> file1.txt
   	  ```
   - Hardlink
-    	```
-		touch file2.txt
-  	  	ln symlink_file.txt file2.txt
-    	-rw-r--r--  2 root root    0 Thg 9   6 11:48 hardlink_file.txt
-		```
+
+    ```
+	touch file2.txt
+  	ln symlink_file.txt file2.txt
+    -rw-r--r--  2 root root    0 Thg 9   6 11:48 hardlink_file.txt
+	```
 
 ## Ls Command:
 - Liệt kê file/thư mục.: ``ls``
