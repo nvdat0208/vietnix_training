@@ -290,8 +290,39 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
 - Giải thích các thông số.
 
 ## Free Command:
-- Giải thích các thông số về RAM.
+- Giải thích các thông số về RAM: ``free -h``
+```
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       2,3Gi       9,8Gi       467Mi       3,3Gi        12Gi
+Swap:          2,0Gi          0B       2,0Gi
+```
 
+``Mem``: bộ nhớ RAM của server.
+
+``Swap``: bộ nhớ swap, được lấy một phần từ ổ đĩa để dự phòng khi RAM đầy.
+
+``total``: tổng dung lượng bộ nhớ.
+
+``used``: dung lượng đã dùng.
+
+``free``: dung lượng còn trống.
+
+``shared``: dùng để nạp các thư viện hoặc dữ liệu mà được nhiều tiến trình sử dụng, khi nhiều tiến trình dùng chung dữ liệu, nó sẽ truy cập vào đây, điều này giúp tiết kiệm cho RAM.
+
+``buff/cache``: dùng để lưu dữ liệu thường xuyên được truy cập, điều này giúp tăng tốc cho hệ thống.
+
+``available``: là tổng của free và buff/cache, dùng để ước lượng cho việc cấp phát cho các ứng dụng mới mà không cần đến swap. Nếu available thấp, phải xem xét đén việc giải phóng RAM.
 ## Df Command:
-- Xem dung lượng disk.
-- Phân vùng `/` là gì.
+- Xem dung lượng disk: ``df -h``
+```
+ Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           1,6G  2,3M  1,6G   1% /run
+/dev/nvme0n1p5   98G   21G   72G  23% /
+tmpfs           7,8G   40M  7,7G   1% /dev/shm
+tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+efivarfs        192K   28K  160K  15% /sys/firmware/efi/efivars
+/dev/nvme0n1p1   96M   37M   60M  39% /boot/efi
+tmpfs           1,6G  9,4M  1,6G   1% /run/user/1000
+```
+
+- Phân vùng `/` là thư mục gốc của hệ điều hành Linux, tất cả mọi thứ của Linux như dữ liệu, chương trình, cấu hình đều nằm bên trong '/', nó quản lý hoàn toàn hệ thống thư mục của Linux. '/' có thể chiếm toàn bộ ổ đĩa hoặc chỉ một phần, nó là một phân vùng logic, các thư mục con của '/' có thể được mount đến các phân vùng khác với nó.
