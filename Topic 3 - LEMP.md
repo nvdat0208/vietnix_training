@@ -258,6 +258,8 @@ server {
 ![Giao diện ssl1](/image/ssl8.png)
 
 - Thao tác cấu hình SSL tương tự cho Worldpress
+![Giao diện ssl1](/image/ssl9.png)
+
 # 7. Tạo tài khoản FTP
 - Cài đặt vsftp
 	```
