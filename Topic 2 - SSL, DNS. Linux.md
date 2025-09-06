@@ -254,13 +254,23 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
 - Di chuyển/đổi tên file/folder: ``mv [tên/đường dẫn file hiện tại][tên/đường dẫn mới của file]``
 
 ## Cut Command:
-- Lấy ký tự thứ `<n>`.
-- Lấy từ ký tự `<n>` trở về sau.
-- Lấy đến ký tự thứ `<n>`.
+- Lấy ký tự thứ `<n>`: ``cut -c 10 file.txt``
+- Lấy từ ký tự `<n>` trở về sau: ``cut -c 10- file.txt``
+- Lấy đến ký tự thứ `<n>`: ``cut -c 10- file.txt``
 
 ## Dig Command:
- - Kiểm tra record A, MX, NS.
- - Kiểm tra record A, MX, NS với custom DNS.
+ - Kiểm tra record A, MX, NS:
+   ```
+   dig google.com A
+   dig google.com MX
+   dig google.com NS
+   ```
+   
+ - Kiểm tra record A, MX, NS với custom DNS
+   ```
+   dig google.com A @8.8.8.8
+   dig google.com A @1.1.1.1
+   ```
 
 ## Tar/Zip/Unzip Command:
 - Nén/giải nén `tar.gz`.
@@ -273,9 +283,21 @@ traceroute to vietnix.vn (14.225.253.240), 64 hops max
 - Umount `/mnt/test`.
 
 ## Symbolic Links, Hard Links Command:
-- Định nghĩa Sym Link.
-- Định nghĩa Hard Link.
-- Ví dụ về Sym Link và Hard Link.
+- Định nghĩa Sym Link: là một con trỏ hoặc một phím tắt trỏ tới một tệp hoặc thư mục khác. Nó chứa đường dẫn đến tệp hoặc thư mục gốc. Giống như một shortcut trên Windows
+- Định nghĩa Hard Link: là địa chỉ thứ hai cho cùng một tệp trên hệ thống. Nó trỏ trực tiếp đến dữ liệu vật lý của tệp trên ổ đĩa, chỉ có thể được tạo trong cùng một phân vùng và không thể trỏ đến một thư mục. Hardlink giống hoàn toàn với dữ liệu gốc nên nếu 1 trong 2 bị xóa thì dữ liệu bên còn lại vẫn tồn tại.
+- Ví dụ về Sym Link và Hard Link
+  	- Symlink
+  	  ```
+  	  touch file1.txt
+  	  ln -s symlink_file.txt file1.txt
+  	  lrwxrwxrwx  1 root root    9 Thg 9   6 11:48 symlink_file.txt -> file1.txt
+  	  ```
+  - Hardlink
+    	```
+		touch file2.txt
+  	  	ln symlink_file.txt file2.txt
+    	-rw-r--r--  2 root root    0 Thg 9   6 11:48 hardlink_file.txt
+		```
 
 ## Ls Command:
 - Liệt kê file/thư mục.: ``ls``
