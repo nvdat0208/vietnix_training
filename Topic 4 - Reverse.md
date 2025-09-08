@@ -135,7 +135,7 @@
 	}
 	```
 	
-- Kích hoạt các Virtual Hosts:\
+- Kích hoạt các Virtual Hosts:
 	```
 	ln -s /etc/nginx/sites-available/vhost-laravel.conf /etc/nginx/sites-enabled/
 	ln -s /etc/nginx/sites-available/vhost-wordpress.conf /etc/nginx/sites-enabled/
