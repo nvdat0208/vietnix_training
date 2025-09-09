@@ -27,8 +27,7 @@
 - Nhập vào nội dung sau:
 	```
 	<VirtualHost *:8080>
-	    ServerName laravel.datnguyen.vietnix.tech
-	    ServerAlias www.laravel.datnguyen.vietnix.tech
+	    ServerName laravel.datnguyen.vietnix.tec
 	    DocumentRoot /var/www/vietnix_training/public/
 	    # Các cấu hình khác cho WordPress (vd: RewriteEngine On)
 	    ErrorLog ${APACHE_LOG_DIR}/domain1_error.log
@@ -49,13 +48,14 @@
 	    </Directory>
 	</VirtualHost>
 	```
-- Virtual Host cho Laravel
+- Tạo file virtual Host cho Laravel
 	``/etc/apache2/sites-available/vhost-wordpress.conf``
-	```
+	
+- Nhập vào nội dung sau:
+  	```
 	<VirtualHost *:8080>
 	    ServerName wp.datnguyen.vietnix.tech
-	    ServerAlias www.wp.datnguyen.vietnix.tech
-	    DocumentRoot /var/www/wordpress/public_html
+	    DocumentRoot /var/www/wordpress
 	    # Cấu hình Laravel, trỏ tới public/
 	    <Directory /var/www/domain2/public_html>
 	        AllowOverride All
@@ -81,12 +81,10 @@
 	```
 	
 - Kích hoạt các vhost
-
 	```	
 	a2ensite vhost-laravel.conf
 	a2ensite vhost-wordpress.conf  
 	```
-
 - Khỏi động module cho SSL ``a2enmod ssl``
 - Khởi động lại Apache ``systemctl restart apache2``
 
