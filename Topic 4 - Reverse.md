@@ -159,7 +159,11 @@
 	```
 - Khởi động lại Apache ``systemctl restart apache2``
 - Khỏi động module cho SSL ``a2enmod ssl``
+- Truy cập 2 domain qua cổng 8080 để xem kết quả
 
+  ![Giao diện mariadb](/image/check_apache.png)
+ 
+  ![Giao diện mariadb](/image/check_php.png)
 ## 2. Cấu hình Nginx (Frontend Reverse Proxy)
 - Tạo file cấu hình cho laravel
 	``/etc/nginx/sites-available/vhost-laravel.conf``
@@ -212,8 +216,3 @@
 	ln -s /etc/nginx/sites-available/vhost-wordpress.conf /etc/nginx/sites-enabled/
 	systemctl restart nginx
 	```
-- Truy cập 2 domain qua cổng 8080 để xem kết quả
-
-  ![Giao diện mariadb](/image/check_apache.png)
- 
-  ![Giao diện mariadb](/image/check_php.png)
