@@ -1,4 +1,4 @@
-# Xây dựng mô hình reverse proxy kết hợp giữa 2 webserver là nginx và apache
+# Xây dựng mô hình reverse proxy kết hợp giữa nginx và apache
 
 ## 1. Cấu hình Apache (Backend Reverse Proxy)
 - Cài đặt Apache
@@ -87,8 +87,70 @@
 	```
 - Khỏi động module cho SSL ``a2enmod ssl``
 - Khởi động lại Apache ``systemctl restart apache2``
+## 2. Cấu hình Apache để sử dụng mod_fastcgi
+- Cài đặt php-fpm và các module FastCGI Apache
+	```
+	apt install php-fpm
+	wget https://mirrors.edge.kernel.org/ubuntu/pool/multiverse/liba/libapache-mod-fastcgi/libapache2-mod-fastcgi_2.4.7~0910052141-1.2_amd64.deb
+	dpkg -i libapache2-mod-fastcgi_2.4.7~0910052141-1.2_amd64.deb
+	```
+- Apache phục vụ các trang PHP bằng cách sử dụng mod_php theo mặc định, để hoạt động với PHP-FPM bạn cần cấu hình một số chi tiết.
 
-## 2. Cấu hình Nginx (Frontend Reverse Proxy)
+- Thêm khối cấu hình cho mod_fastcgi, khối này phụ thuộc vào mod_action. Theo mặc định, mod_action sẽ bị tắt, hãy bật nó lên
+
+	``a2enmod actions``
+
+- Backup file fastcgi gốc và tạo 1 file mới
+	```
+	mv /etc/apache2/mods-enabled/fastcgi.conf /etc/apache2/mods-enabled/fastcgi.conf.defaultvi
+	vi /etc/apache2/mods-enabled/fastcgi.conf
+	```
+- Thêm nội dung cho file vừa tạo
+	```
+	<IfModule mod_fastcgi.c>
+	  AddHandler fastcgi-script .fcgi
+	  FastCgiIpcDir /var/lib/apache2/fastcgi
+	  AddType application/x-httpd-fastphp .php
+	  Action application/x-httpd-fastphp /php-fcgi
+	  Alias /php-fcgi /usr/lib/cgi-bin/php-fcgi
+	  FastCgiExternalServer /usr/lib/cgi-bin/php-fcgi -socket /run/php/php8.1-fpm.sock -pass-header Authorization
+	  <Directory /usr/lib/cgi-bin>
+	    Require all granted
+	  </Directory>
+	</IfModule>
+	```
+- Kiểm tra cú pháp và reload lại apache
+	```
+	apache2ctl configtest
+	systemctl restart apache2
+	```
+
+- Xác minh lại chức năng của PHP, tạo 1 file default virtual host
+	``vi /etc/apache2/sites-available/vhost-default.conf``
+- Thêm nôị dung sau
+	```
+	<VirtualHost *:8080>
+	    ServerName default-server
+	    DocumentRoot /var/www/html
+	
+	    <Directory /var/www/html>
+	        AllowOverride All
+	        Require all granted
+	    </Directory>
+	
+	    # Bạn có thể thêm một tệp index.html đơn giản
+	    DirectoryIndex info.php
+	</VirtualHost>
+	```
+- Lưu file, kiểm tra cú pháp, khởi động lại apache2
+	```
+	apache2ctl configtest
+	systemctl restart apache2
+	```
+- Truy cập http://host:8080/info.php sẽ hiện giao diện php, kiểm tra các thông tin trên giao diện
+	- Server API: FPM/FastCGI
+	- Server_Software: Apache
+## 3. Cấu hình Nginx (Frontend Reverse Proxy)
 - Tạo file cấu hình cho laravel
 	``/etc/nginx/sites-available/vhost-laravel.conf``
 
