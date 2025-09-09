@@ -81,7 +81,7 @@
 	apache2ctl configtest
 	systemctl restart apache2
 	```
-- Truy cập http://host:8080/info.php để đảm bảo php hoạt động trên Apache
+- Truy cập http://ip:8080/info.php để đảm bảo php hoạt động trên Apache
   ![Giao diện mariadb](/image/PHP.png)
 
 ### 1.3. Tạo virtual host cho Apache
