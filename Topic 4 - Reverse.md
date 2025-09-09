@@ -86,9 +86,10 @@
 	a2ensite vhost-laravel.conf
 	a2ensite vhost-wordpress.conf  
 	```
-- Khởi động lại Apache ``systemctl restart apache2``
 
 - Khỏi động module cho SSL ``a2enmod ssl``
+- Khởi động lại Apache ``systemctl restart apache2``
+
 ## 2. Cấu hình Nginx (Frontend Reverse Proxy)
 - Tạo file cấu hình cho laravel
 	``/etc/nginx/sites-available/vhost-laravel.conf``
