@@ -165,54 +165,67 @@
  
   ![Giao diện mariadb](/image/check_php.png)
 ## 2. Cấu hình Nginx (Frontend Reverse Proxy)
-- Tạo file cấu hình cho laravel
-	``/etc/nginx/sites-available/vhost-laravel.conf``
+- Xóa liên kết tượng trưng của server ảo mặc định vì sẽ không sử dụng nó nữa:
+	``rm /etc/nginx/sites-enabled/default``
+- Tạo thư mục root cho cả hai trang web:
+	``mkdir -v /usr/share/nginx/wordpress /usr/share/nginx/laravel``
+- Tương tự với Apache, hãy tạo các tệp index và phpinfo() để kiểm tra sau khi hoàn thành cài đặt
+	```
+	echo "<h1 style='color: blue;'>Nginx wordpress 1</h1>" | sudo tee /usr/share/nginx/wordpress/index.html
+    echo "<h1 style='color: orange;'>Nginx laravel 1</h1>" | sudo tee /usr/share/nginx/laravel/index.html
+    echo "<?php phpinfo(); ?>" | sudo tee /usr/share/nginx/wordpress/info.php
+    echo "<?php phpinfo(); ?>" | sudo tee /usr/share/nginx/laravel/info.php
+	```
 
+- Tạo file virtual host cho 2 domain
+	```
+	vi /etc/nginx/sites-available/nginx1.your_domain
+	vi /etc/nginx/sites-available/nginx1.your_domain
+	```
+- Thêm nội dung vào file
 	```
 	server {
-	    listen 80;
-	    listen 443 ssl;
-	    server_name laravel.datnguyen.vietnix.tech;
-	
-	    # Cấu hình SSL
-	    ssl_certificate /etc/ssl/laravel/certificate.crt;
-	    ssl_certificate_key /etc/ssl/laravel/private.key;
-	
-	    location / {
-	        proxy_pass http://localhost:8080;
-	        proxy_set_header Host $host;
-	        proxy_set_header X-Real-IP $remote_addr;
-	        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	        proxy_set_header X-Forwarded-Proto $scheme;
-	    }
+    listen 80 default_server;
+
+    root /usr/share/nginx/wordpress;
+    index index.php index.html index.htm;
+
+    server_name wp.datnguyen.vietnix.tech;
+    
+    location / {
+        try_files $uri $uri/ /index.php;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        include snippets/fastcgi-php.conf;
+   	 }
 	}
-	```
-	
-- Tạo file cấu hình cho wordpress
-	``/etc/nginx/sites-available/vhost-wordpress.conf``
+	```	
 	```
 	server {
-	    listen 80;
-	    listen 443 ssl;
-	    server_name wp.datnguyen.vietnix.tech;
-	
-	    # Cấu hình SSL
-	    ssl_certificate /etc/ssl/wordpress/certificate.crt;
-	    ssl_certificate_key /etc/ssl/wordpress/private.key;
-	
-	    location / {
-	        proxy_pass http://localhost:8080;
-	        proxy_set_header Host $host;
-	        proxy_set_header X-Real-IP $remote_addr;
-	        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	        proxy_set_header X-Forwarded-Proto $scheme;
-	    }
+    listen 80 default_server;
+
+    root /usr/share/nginx/laravel;
+    index index.php index.html index.htm;
+
+    server_name laravel.datnguyen.vietnix.tech;
+    
+    location / {
+        try_files $uri $uri/ /index.php;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        include snippets/fastcgi-php.conf;
+   	 }
 	}
-	```
-	
+	```	
 - Kích hoạt các Virtual Hosts:
 	```
 	ln -s /etc/nginx/sites-available/vhost-laravel.conf /etc/nginx/sites-enabled/
 	ln -s /etc/nginx/sites-available/vhost-wordpress.conf /etc/nginx/sites-enabled/
 	systemctl restart nginx
 	```
+- Truy cập 2 domain theo http://domain/info.php để kiểm tra
+![Giao diện php](/image/check_php_nginx.png)
