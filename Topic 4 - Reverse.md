@@ -1,7 +1,7 @@
-# Xây dựng mô hình reverse proxy kết hợp giữa nginx và apache
+# Xây dựng mô hình reverse proxy kết hợp nginx và apache
 
 ## 1. Cấu hình Apache (Backend Reverse Proxy)
-- Cài đặt Apache
+### 1.1. Cài đặt Apache
 
 	``apt install apache2``
 - Khai báo port 8080 và 8443 để không trùng với Nginx
@@ -21,73 +21,7 @@
 	systemctl start apache2
 	```
 	
-- Tạo file virtual host cho wordpress
-	``/etc/apache2/sites-available/vhost-laravel.conf``
-	
-- Nhập vào nội dung sau:
-	```
-	<VirtualHost *:8080>
-	    ServerName laravel.datnguyen.vietnix.tec
-	    DocumentRoot /var/www/vietnix_training/public/
-	    # Các cấu hình khác cho WordPress (vd: RewriteEngine On)
-	    ErrorLog ${APACHE_LOG_DIR}/domain1_error.log
-	    CustomLog ${APACHE_LOG_DIR}/domain1_access.log combined
-	</VirtualHost>
-	
-	<VirtualHost *:8443>
-	    ServerName laravel.datnguyen.vietnix.tech
-	    DocumentRoot /var/www/vietnix_training/public/
-	
-	    SSLEngine on
-	    SSLCertificateFile /etc/ssl/laravel/certificate.crt
-	    SSLCertificateKeyFile /etc/ssl/laravel/private.key
-	
-	    <Directory /var/www/vietnix_training/public/>
-	        AllowOverride All
-	        Require all granted
-	    </Directory>
-	</VirtualHost>
-	```
-- Tạo file virtual Host cho Laravel
-	``/etc/apache2/sites-available/vhost-wordpress.conf``
-	
-- Nhập vào nội dung sau:
-  	```
-	<VirtualHost *:8080>
-	    ServerName wp.datnguyen.vietnix.tech
-	    DocumentRoot /var/www/wordpress
-	    # Cấu hình Laravel, trỏ tới public/
-	    <Directory /var/www/domain2/public_html>
-	        AllowOverride All
-	        Require all granted
-	    </Directory>
-	    ErrorLog ${APACHE_LOG_DIR}/domain2_error.log
-	    CustomLog ${APACHE_LOG_DIR}/domain2_access.log combined
-	</VirtualHost>
-	
-	<VirtualHost *:8443>
-	    ServerName wp.datnguyen.vietnix.tech
-	    DocumentRoot /var/www/wordpress/
-	
-	    SSLEngine on
-	    SSLCertificateFile /etc/ssl/wordpress/certificate.crt
-	    SSLCertificateKeyFile /etc/ssl/wordpress/private.key
-	
-	    <Directory /var/www/domain1/wordpress/>
-	        AllowOverride All
-	        Require all granted
-	    </Directory>
-	</VirtualHost>
-	```
-	
-- Kích hoạt các vhost
-	```	
-	a2ensite vhost-laravel.conf
-	a2ensite vhost-wordpress.conf  
-	```
-- Khỏi động module cho SSL ``a2enmod ssl``
-- Khởi động lại Apache ``systemctl restart apache2``
-## 2. Cấu hình Apache để sử dụng mod_fastcgi
+### 1.2. Cấu hình PHP-FPM và mod_fastcgi cho Apache
 - Cài đặt php-fpm và các module FastCGI Apache
 	```
 	apt install php-fpm
@@ -147,10 +81,86 @@
 	apache2ctl configtest
 	systemctl restart apache2
 	```
-- Truy cập http://host:8080/info.php sẽ hiện giao diện php, kiểm tra các thông tin trên giao diện
-	- Server API: FPM/FastCGI
-	- Server_Software: Apache
-## 3. Cấu hình Nginx (Frontend Reverse Proxy)
+- Truy cập http://host:8080/info.php để đảm bảo php hoạt động trên Apache
+  ![Giao diện mariadb](/image/PHP.png)
+
+### 1.3. Tạo virtual host cho Apache
+- Tạo ra 2 file index.html và info.php trong thư mục /var/www/domain/ của 2 domain cho mục đích kiểm tra cấu hình
+	```
+	# domain của Wordpress
+	echo "<h1 style='color: green;'>Wordpress</h1>" | tee index.html
+	echo "<?php phpinfo();?>" | tee info.php
+	```
+	```
+	# domain của Laravel
+	echo "<h1 style='color: orange;'>Laravel</h1>" | tee index.html
+	echo "<?php phpinfo();?>" | tee info.php
+- Tạo virtual host cho wordpress
+	``/etc/apache2/sites-available/vhost-laravel.conf``
+- Nhập vào nội dung sau:
+	```
+	<VirtualHost *:8080>
+	    ServerName laravel.datnguyen.vietnix.tech
+	    ServerAlias www.laravel.datnguyen.vietnix.tech
+	    DocumentRoot /var/www/vietnix_training/public/
+	    # Các cấu hình khác cho WordPress (vd: RewriteEngine On)
+	    ErrorLog ${APACHE_LOG_DIR}/domain1_error.log
+	    CustomLog ${APACHE_LOG_DIR}/domain1_access.log combined
+	</VirtualHost>
+	
+	<VirtualHost *:8443>
+	    ServerName laravel.datnguyen.vietnix.tech
+	    DocumentRoot /var/www/vietnix_training/public/
+	
+	    SSLEngine on
+	    SSLCertificateFile /etc/ssl/laravel/certificate.crt
+	    SSLCertificateKeyFile /etc/ssl/laravel/private.key
+	
+	    <Directory /var/www/vietnix_training/public/>
+	        AllowOverride All
+	        Require all granted
+	    </Directory>
+	</VirtualHost>
+	```
+- Tạo virtual Host cho Laravel
+	``/etc/apache2/sites-available/vhost-wordpress.conf``
+	```
+	<VirtualHost *:8080>
+	    ServerName wp.datnguyen.vietnix.tech
+	    ServerAlias www.wp.datnguyen.vietnix.tech
+	    DocumentRoot /var/www/wordpress/public_html
+	    # Cấu hình Laravel, trỏ tới public/
+	    <Directory /var/www/domain2/public_html>
+	        AllowOverride All
+	        Require all granted
+	    </Directory>
+	    ErrorLog ${APACHE_LOG_DIR}/domain2_error.log
+	    CustomLog ${APACHE_LOG_DIR}/domain2_access.log combined
+	</VirtualHost>
+	
+	<VirtualHost *:8443>
+	    ServerName wp.datnguyen.vietnix.tech
+	    DocumentRoot /var/www/wordpress/
+	
+	    SSLEngine on
+	    SSLCertificateFile /etc/ssl/wordpress/certificate.crt
+	    SSLCertificateKeyFile /etc/ssl/wordpress/private.key
+	
+	    <Directory /var/www/domain1/wordpress/>
+	        AllowOverride All
+	        Require all granted
+	    </Directory>
+	</VirtualHost>
+	```
+- Kích hoạt các vhost
+	```	
+	a2ensite vhost-laravel.conf
+	a2ensite vhost-wordpress.conf  
+	```
+- Khởi động lại Apache ``systemctl restart apache2``
+- Khỏi động module cho SSL ``a2enmod ssl``
+
+## 2. Cấu hình Nginx (Frontend Reverse Proxy)
 - Tạo file cấu hình cho laravel
 	``/etc/nginx/sites-available/vhost-laravel.conf``
 
@@ -202,3 +212,8 @@
 	ln -s /etc/nginx/sites-available/vhost-wordpress.conf /etc/nginx/sites-enabled/
 	systemctl restart nginx
 	```
+- Truy cập 2 domain qua cổng 8080 để xem kết quả
+
+  ![Giao diện mariadb](/image/check_apache.png)
+ 
+  ![Giao diện mariadb](/image/check_php.png)
