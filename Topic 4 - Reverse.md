@@ -165,6 +165,7 @@
  
   ![Giao diện mariadb](/image/check_php.png)
 ## 2. Cấu hình Nginx (Frontend Reverse Proxy)
+### 2.1. Cấu hình các virtual host cho Nginx
 - Xóa liên kết tượng trưng của server ảo mặc định vì sẽ không sử dụng nó nữa:
 	``rm /etc/nginx/sites-enabled/default``
 - Tạo thư mục root cho cả hai trang web:
@@ -229,3 +230,28 @@
 	```
 - Truy cập 2 domain theo http://domain/info.php để kiểm tra
 ![Giao diện php](/image/check_php_nginx.png)
+## 2.2. Cấu hình Nginx cho các virtual server của Apache
+- Tạo file cấu hình cho proxy nginx ``vi/etc/nginx/sites-available/proxy``
+- Thêm đoạn code sau vào file, đoạn code này chỉ định domain của các virtual server trong Apache và chuyển tiếp yêu cầu của chúng đến Apache.
+	```
+	server {
+    listen 80;
+    server_name laravel.datnguyen.vietnix.tech wp.datnguyen.vietnix.tech;
+
+    location / {
+        proxy_pass http://103.90.226.73:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    		}
+	}
+	```
+- Lưu file, tạo symbolic link, kiểm tra cú pháp và reload nginx
+	```
+	ln -s /etc/nginx/sites-available/proxy /etc/nginx/sites-enabled/proxy
+	nginx -t
+	systemctl restart nginx
+	```
+- Truy cập http://domain/info.php , Kéo xuống phần biến số PHP và kiểm tra các giá trị:SERVER_SOFTWARE và DOCUMENT_ROOT xác nhận rằng yêu cầu này đã được xử lý bởi Apache. Các biến số HTTP_X_REAL_IP và HTTP_X_FORWARDED_FOR đã được thêm bởi Nginx và sẽ hiển thị công khai địa chỉ IP của máy tính bạn đang sử dụng để truy cập URL (nếu bạn truy cập Apache trực tiếp trên cổng 8080 thì bạn sẽ không thấy các biến số trên).
+![Kiem tra bien so php](/image/check_php_proxy.png)
