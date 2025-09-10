@@ -398,7 +398,12 @@
 	systemctl restart nginx
 	```
 ![default vhost](/image/default.png)
-## 3. So sánh Nginx và Apache trong Reverse Proxy
+## 3. Kiểm tra Reverse Proxy đã hoạt động
+### 3.1. Kiểm tra hoạt động của Reverse proxy
+- Truy cập vào 2 domain theo đường dẫn https://domain/info.php
+- Trên giao diện của PHP, tham số SERVER_SOFTWARE cho thấy web được xử lý bởi Apache, nhưng khi vào Dev tool (bấm F12), thì hiển thị request này được xử lý bởi Nginx. Điều đó nghĩa là request đi qua Nginx trước khi được xử lý bởi Apache.
+![](/image/proxy.png)
+### 3.2. So sánh Nginx và Apache trong Reverse proxy
 - Nginx theo kiến trúc sự kiện không đồng bộ (Asynchronous event-driven) giúp cho nó tăng tốc độ, có khả năng xử lý hàng nghìn kết nối cùng lúc. Nginx hoạt động theo mô hình master-work:
 	+ Master process: có nhiệm vụ phân bổ các request cho các worker từ client, master tiếp tục phân bổ cho các worker khác cho đến khi nhận được respond từ worker, nó sẽ trả respond đến client.
 	+ Worker process: sẽ nhận các request của client từ worker, mỗi worker có thể xử lý hơn 1000 request. Ngay khi request được xử lý, nó sẽ gửi respond cho master và tiếp tục request kế tiếp.
