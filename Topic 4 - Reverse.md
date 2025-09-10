@@ -397,4 +397,4 @@
 	nginx -t
 	systemctl restart nginx
 	```
-![default vhost](/image/default)
+![default vhost](/image/default.png)
