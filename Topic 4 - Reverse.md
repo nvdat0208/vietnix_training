@@ -340,3 +340,10 @@
 	![SSL](/image/ssl.png)
 	- Truy cập 2 domain bằng https để kiểm tra
 	![SSL](/image/check_ssl.png)
+## 2.5. Chặn truy cập trực tiếp vào Apache
+- Apache đang lắng nghe từ 2 cổng 8080 và 8443, dùng iptables để chặn cả 2 cổng 
+	```
+	iptables -I INPUT -p tcp --dport 8080 ! -s 103.90.226.73 -j REJECT --reject-with tcp-reset
+	iptables -I INPUT -p tcp --dport 8443 ! -s 103.90.226.73 -j REJECT --reject-with tcp-reset
+	```
+ 	![iptables](/image/iptables.png)
