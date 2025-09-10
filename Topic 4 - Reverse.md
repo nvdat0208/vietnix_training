@@ -398,3 +398,13 @@
 	systemctl restart nginx
 	```
 ![default vhost](/image/default.png)
+## 3. So sánh Nginx và Apache trong Reverse Proxy
+- Nginx theo kiến trúc sự kiện không đồng bộ (Asynchronous event-driven) giúp cho nó tăng tốc độ, có khả năng xử lý hàng nghìn kết nối cùng lúc. Nginx hoạt động theo mô hình master-work:
+	+ Master process: có nhiệm vụ phân bổ các request cho các worker từ client, master tiếp tục phân bổ cho các worker khác cho đến khi nhận được respond từ worker, nó sẽ trả respond đến client.
+	+ Worker process: sẽ nhận các request của client từ worker, mỗi worker có thể xử lý hơn 1000 request. Ngay khi request được xử lý, nó sẽ gửi respond cho master và tiếp tục request kế tiếp.
+- Apache theo kiến trúc đa tiến trình, đa luồng. Được điều khiển bởi các MPM, khả năng của Apache có thể được mở rộng vì nó có nhiều module hỗ trợ:
+	+ Khi nhận request từ client, Apache sẽ khởi tạo 1 tiến trình gán cho request đó.
+	+ Tiến trình sẽ đọc request, xử lý và gửi respond cho client.
+	+ Trong thời gian đó, tiến trình sẽ bị khóa, không thể nhận thêm request khác, cho đến khi nó xử lý xong request hiện tại.
+- Nginx với kiến trúc sự kiện không đồng bộ có xử lý nhiều request cùng một lúc, giúp tăng tốc độ cho web server, phù hợp khi làm proxy để xử lý cho các web tĩnh hay lượng truy cập lớn vào website.
+- Ngược lại, Apache với kiến đa luồng với nhiều module hỗ trợ có thể xử lý tốt các wed động nhưng không thể xử lý quá nhiều request, nó được đặt sau Nginx để làm Backend.
