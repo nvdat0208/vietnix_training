@@ -347,3 +347,54 @@
 	iptables -I INPUT -p tcp --dport 8443 ! -s 103.90.226.73 -j REJECT --reject-with tcp-reset
 	```
  	![iptables](/image/iptables.png)
+## 2.6. Tạo default vhost cho trường hợp truy cập web bằng ip
+- Tạo một thư mục cho default host
+	```
+	mkdir -p /var/www/default_host
+	chown -R www-data:www-data /var/www/default_host
+	chmod -R 755 /var/www/default_host
+	```
+- Tạo một file index.html đơn giản để kiểm tra:
+	```
+	echo "<h1 style='color: red;'>You banned</h1>" | sudo tee /var/www/default_host/index.html
+	```
+- Chỉnh file cấu hình Nginx mặc định ở /etc/nginx/sites-available/default , tạo 2 khôi server cho http và https
+	```
+	server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+
+    root /var/www/default_host;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+	    }
+	}
+	```
+	```
+	server {
+    listen 443 ssl http2 default_server;
+    listen [::]:443 ssl http2 default_server;
+    server_name _;
+
+    # Thay thế các đường dẫn chứng chỉ dưới đây bằng đường dẫn của bạn
+    ssl_certificate /etc/ssl/wordpress/certificate.crt;
+    ssl_certificate_key /etc/ssl/wordpress/private.key;
+
+    root /var/www/default_host;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+	    }
+	}
+	```
+- Tạo symbolic link, kiểm tra file và restart nginx	
+	```
+	ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+	nginx -t
+	systemctl restart nginx
+	```
+![default vhost](/image/default)
