@@ -255,3 +255,50 @@
 	```
 - Truy cập http://domain/info.php , Kéo xuống phần biến số PHP và kiểm tra các giá trị:SERVER_SOFTWARE và DOCUMENT_ROOT xác nhận rằng yêu cầu này đã được xử lý bởi Apache. Các biến số HTTP_X_REAL_IP và HTTP_X_FORWARDED_FOR đã được thêm bởi Nginx và sẽ hiển thị công khai địa chỉ IP của máy tính bạn đang sử dụng để truy cập URL (nếu bạn truy cập Apache trực tiếp trên cổng 8080 thì bạn sẽ không thấy các biến số trên).
 ![Kiem tra bien so php](/image/check_php_proxy.png)
+## 2.3. Cài đặt và cấu hình mod_rpaf
+- Module rpaf là một plugin cho Apache, được sử dụng trong reverse proxy để lấy địa chỉ IP thực của người dùng từ header X-Forwarded-For. Mô-đun này thay đổi địa chỉ IP từ xa (remote address) của máy khách mà các mô-đun Apache khác nhìn thấy khi nhận được yêu cầu qua một proxy tin cậy, đảm bảo nhật ký và thống kê truy cập hiển thị chính xác IP của người dùng cuối.
+- Chuyển đến thư mục home và cài đặt các gói cần thiết để xây dựng module
+	```
+	wget https://github.com/gnif/mod_rpaf/archive/stable.zip
+	unzip stable.zip
+	```
+- Chuyển vào thư mục mới chứa các file: ``cd mod_rpaf-stable``
+- Biên dịch và cài đặt module:
+	```
+	make
+	make install
+	```
+- Tạo một tệp trong thư mục mods-available để tải module rpaf
+	``sudo nano /etc/apache2/mods-available/rpaf.load``
+- Thêm đoạn code sau vào file để tải module, lưu và thoát:
+	```
+	LoadModule rpaf_module /usr/lib/apache2/modules/mod_rpaf.so
+	```
+- Tạo một file khác trong thư mục này có tên rpaf.conf chứa các chỉ thị cấu hình cho mod_rpaf
+	```
+	sudo nano /etc/apache2/mods-available/rpaf.conf
+	```
+- Thêm đoạn code sau:
+	```
+	<IfModule mod_rpaf.c>
+        RPAF_Enable             On
+        RPAF_Header             X-Real-Ip
+        RPAF_ProxyIPs           your_server_ip 
+        RPAF_SetHostName        On
+        RPAF_SetHTTPS           On
+        RPAF_SetPort            On
+    </IfModule>
+    ```
+	- RPAF_Header: Tiêu đề sử dụng cho địa chỉ IP thực của máy client.
+	- RPAF_ProxyIPs: Địa chỉ IP của proxy để điều chỉnh yêu cầu HTTP.
+	- RPAF_SetHostName: Cập nhật tên của virtual server để ServerName và ServerAlias hoạt động.
+	- RPAF_SetHTTPS: Đặt biến môi trường HTTPS dựa trên giá trị chứa trong X-	Forwarded-Proto.
+	- RPAF_SetPort: Đặt biến môi trường SERVER_PORT. Điều này hữu ích khi Apache đứng sau một proxy SSL.
+- Lưu file, kích hoạt module, kiểm tra và reload apache2:
+	```
+	sudo a2enmod rpaf
+	sudo apachectl -t
+	sudo systemctl reload apache2
+	```domain
+- Truy cập vào http://domain/info.php , kiểm tra phần PHP Variables, biến REMOTE_ADDR sẽ là địa chỉ IP công khai của máy tính của bạn.
+![kiem tra rpaf](/image/rpaf.png)
