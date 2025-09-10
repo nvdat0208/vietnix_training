@@ -302,3 +302,41 @@
 	```domain
 - Truy cập vào http://domain/info.php , kiểm tra phần PHP Variables, biến REMOTE_ADDR sẽ là địa chỉ IP công khai của máy tính của bạn.
 ![kiem tra rpaf](/image/rpaf.png)
+## 2.4. Cấu hình SSL
+- Dùng chứng chỉ Cerificate từ ZeroSSL, thêm vào cấu hình của Apache và Nginx
+- Apache: 
+	- vào cấu hình 2 file sau:
+	```
+	vi /etc/apache2/sites-available/vhost-laravel.conf
+	vi /etc/apache2/sites-available/vhost-wordpress.conf
+	```
+	- Thêm SSL vào 2 file:
+	```
+	<VirtualHost *:8443>
+        ...
+
+        SSLEngine on
+        SSLCertificateFile /etc/ssl/laravel/certificate.crt
+        SSLCertificateKeyFile /etc/ssl/laravel/private.key
+     	...
+      </VirtualHost>
+	```
+	```
+	<VirtualHost *:8443>
+        ...
+
+        SSLEngine on
+        SSLCertificateFile /etc/ssl/wordpress/certificate.crt
+        SSLCertificateKeyFile /etc/ssl/wordpress/private.key
+     	...
+      </VirtualHost>
+	```
+- Nginx:
+	- vào cấu hình file sau:
+	```
+	vi /etc/nginx/sites-available/proxy
+	```
+	- Tách khối ``server`` làm 2 khối riêng cho từng domain, thêm SSL và khối server chuyển hướng http > https
+	![SSL](/image/ssl.png)
+	- Truy cập 2 domain bằng https để kiểm tra
+	![SSL](/image/check_ssl.png)
