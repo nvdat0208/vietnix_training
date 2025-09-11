@@ -438,3 +438,88 @@
 ![apacheBench](/image/ab1.png)
 
 ![apacheBench](/image/ab2.png)
+## 4. Triển khai website trên wordpress và laravel
+- Tạo 2 thư mục mới chứa source code cho website
+	```
+	mkdir -p /var/www/source_laravel/
+	mkdir -p /var/www/source_wordpress/
+	```
+- Phân quyền cho cả 2 thư mục
+	```
+	chown -R www-data:www-data /var/www/source_wordpress/
+	chmod -R 755 /var/www/source_wordpress/
+	chown -R www-data:www-data /var/www/source_laravel/
+	chmod -R 755 /var/www/source_laravel/
+	```
+- Tạo 2 file virtual host cho 2 source trên Apache, nội dung như file virtual host trước đó đã tạo, chỉ thay đổi directory root của source code
+	```
+	vi /etc/apache2/sites-available/source_laravel.conf
+	vi /etc/apache2/sites-available/source_wordpress.conf
+	```
+- Kích hoạt 2 file virtual host và reload apache2
+	```
+	a2ensite source_laravel.conf
+	a2ensite source_wordpress.conf
+	systemctl restart apache2
+	```
+- Trên Nginx, khai báo thông tin của 2 source web trên file cấu hình proxy. Ta copy một file theo file cũ để sao lưu cho trường hợp cấu hình sai
+	```
+	cd /etc/nginx/sites-available/
+	cp proxy proxy.bk
+	```
+- Thay đổi thông tin dicectory root của soure code trên nginx
+	```
+	server {
+    listen 443 ssl http2;
+    server_name laravel.datnguyen.vietnix.tech;
+    root /var/www/source_laravel/public;
+    index index.html index.php info.php;
+    ...
+    ...
+    server {
+    listen 443 ssl http2;
+    server_name laravel.datnguyen.vietnix.tech;
+    root /var/www/source_wordpress;
+    index index.html index.php info.php;
+    ...
+	```
+- Kiểm tra cú pháp nginx và reload
+	```
+	nginx -t
+	systemctl restart nginx
+	```
+- Ta thử truy cập website của 2 domain, đến bước này sẽ báo lỗi 500, mã lỗi 5xx là lỗi phía server, phía Client đã truy cập được vào, ta xem log tại đây
+	```
+	tail -n 50 /var/www/source_laravel/storage/logs/laravel.log
+	```
+- Trường hợp này do website không kết nối đến được cơ sở dữ liệu, tiếp tục tạo cơ sở dữ liệu cho 2 website
+	```
+	mysql -u root -p
+	CREATE DATABASES db_wordpress;
+	CREATE DATABASES db_laravel;
+	```
+- Tạo cho 2 website user được cấp quyền để truy cập đến cơ sơr dữ liệu
+	```
+	CREATE USER 'user_laravel'@'localhost' IDENTIFIED BY 'P@ssW0rd';
+	CREATE USER 'user_wordpress'@'localhost' IDENTIFIED BY 'P@ssW0rd';
+	GRANT ALL PRIVILEDGES ON db_laravel.* TO 'user_laravel'@'localhost';
+	GRANT ALL PRIVILEDGES ON db_laravel.* TO 'user_wordpress'@'localhost';
+	FLUSH PRIVILEGES;
+	```
+- Sau khi tạo xong, import dữ liệu cho 2 database, ở đây có 2 file .sql cho mỗi website
+	```
+	mysql -u user_laravel -p db_laravel < /home/linhlt_db.sql 
+	mysql -u user_wordpress -p db_wordpress < /home/linhlt_wp_lodoz.sql
+	```
+- Khai báo thông tin truy cập cơ sở dữ liệu cho cấu hình của source web
+	- Laravel
+	```
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=db_laravel
+	DB_USERNAME=user_laravel
+	DB_PASSWORD=P@ssW0rd
+
+	```
+	- Kết quả
+	![web laravel](/image/web_laravel.png)
