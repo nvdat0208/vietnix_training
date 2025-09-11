@@ -413,3 +413,28 @@
 	+ Trong thời gian đó, tiến trình sẽ bị khóa, không thể nhận thêm request khác, cho đến khi nó xử lý xong request hiện tại.
 - Nginx với kiến trúc sự kiện không đồng bộ có xử lý nhiều request cùng một lúc, giúp tăng tốc độ cho web server, phù hợp khi làm proxy để xử lý cho các web tĩnh hay lượng truy cập lớn vào website.
 - Ngược lại, Apache với kiến đa luồng với nhiều module hỗ trợ có thể xử lý tốt các wed động nhưng không thể xử lý quá nhiều request, nó được đặt sau Nginx để làm Backend.
+### 3.3. Kiểm tra hiệu năng của Nginx với ApacheBench
+- Để kiểm tra khả năng xử lý nhiều request đồng thời của Nginx, từ máy client, tải về ApacheBench
+
+	``apt install apache2-utils -y``
+- Chạy lệnh sau
+	```
+	ab -n 10000 -c 1000 https://wp.datnguyen.vietnix.tech/index.html
+ 	```
+ 	``ab``: công cụ ApacheBench
+  
+  	``-n``: số lượng request gửi đến server, ở đây ta gửi 10000 request
+  
+  	``-c``: tổng số request đồng thời, server sẽ nhận 1000 request đồng thời
+  
+  	``https://host:port/path/``: URI của trang web, vì Nginx xử lý các web tĩnh, ta sẽ gửi request đường dẫn của web tĩnh
+- Kết quả, tạo 10000 request và gửi 1000 gói tin đồng thời từ phía client, cpu và ram của server không bị quá tải. Một vài thông số trả về từ ApacheBench
+
+	``Time taken for tests``: tổng số thời gian xử lý tất cả request, ở đây là 7.720s
+
+	``Requests per second``: số lượng request được xử lý trên mỗi giây, ở đay là 1294 req/s
+
+	``Percentage of the requests served within a certain time``: phần trăm số request được xử lý trong một khoảng thời gian nhất định, ở đây mất 2065ms cho 100% request
+![apacheBench](/image/ab1.png)
+
+![apacheBench](/image/ab2.png)
