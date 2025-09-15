@@ -10,3 +10,10 @@
 - Mở trình duyệt và đăng nhập vào aaPanel. Sau khi đăng nhập, hệ thống sẽ yêu cầu chọn loại web server, ta chọn one-click install vào LAMP. Quá trình có thể mất vài phút.
 
 ![aapanel lamp](/image/aa_lamp.png)
+## Thêm website
+- Để thêm một website mới, chọn Website trên thanh công cụ bên trái. Nhấn vào Add site.
+![aapanel website1](/image/aa_website1.png)
+- Nhập domain vào ô đầu tiên, các mục còn lại sẽ tự động được điền. Đặc biệt, tại mục Database, chọn MySQL. Lưu lại thông tin Username và Password vì sẽ cần thiết cho các bước tiếp theo. Cuối cùng, nhấn Confirm để thêm.
+![aapanel website1](/image/aa_website1.png)
+- Hoàn thành bước thêm website. Tải lên mã nguồn của WordPress cho website mới.
+![aapanel website1](/image/aa_website1.png)
