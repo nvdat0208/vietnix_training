@@ -14,6 +14,6 @@
 - Để thêm một website mới, chọn Website trên thanh công cụ bên trái. Nhấn vào Add site.
 ![aapanel website1](/image/aa_website1.png)
 - Nhập domain vào ô đầu tiên, các mục còn lại sẽ tự động được điền. Đặc biệt, tại mục Database, chọn MySQL. Lưu lại thông tin Username và Password vì sẽ cần thiết cho các bước tiếp theo. Cuối cùng, nhấn Confirm để thêm.
-![aapanel website1](/image/aa_website1.png)
+![aapanel website1](/image/aa_website2.png)
 - Hoàn thành bước thêm website. Tải lên mã nguồn của WordPress cho website mới.
-![aapanel website1](/image/aa_website1.png)
+![aapanel website1](/image/aa_website3.png)
