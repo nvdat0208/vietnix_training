@@ -10,7 +10,7 @@
 - Mở trình duyệt và đăng nhập vào aaPanel. Sau khi đăng nhập, hệ thống sẽ yêu cầu chọn loại web server, ta chọn one-click install vào LAMP. Quá trình có thể mất vài phút.
 
 ![aapanel lamp](/image/aa_lamp.png)
-## Thêm website
+## Tạo domain
 - Để thêm một website mới, chọn Website trên thanh công cụ bên trái. Nhấn vào Add site.
 ![aapanel website1](/image/aa_website1.png)
 - Nhập domain vào ô đầu tiên, các mục còn lại sẽ tự động được điền. Đặc biệt, tại mục Database, chọn MySQL. Lưu lại thông tin Username và Password vì sẽ cần thiết cho các bước tiếp theo. Cuối cùng, nhấn Confirm để thêm.
@@ -26,7 +26,7 @@
 - Sau đó, chọn Unzip để giải nén mã nguồn, chọn Confirm để bắt đầu quá trình giải nén.
 ![aapanel source4](/image/aa_source4.png)
 - Hoàn tất quá trình giải nén, bạn sẽ thấy một thư mục mới có tên là "source wordpress" đã được tạo ra. Vào thư mục này, chọn tất cả các file và nhấn vào Cut, sau đó Paste tất cả file vào đúng Document Root của website.
-## Thêm SSL cho website
+## Thêm chứng chỉ SSL cho website
 - Vào mục Website trên aaPanel, trên các domain đã được tạo, bấm vào ``Conf`` để thêm chứng chỉ SSL
 ![aapanel ssl1](/image/aa_ssl1.png)
 - mục SSL sẽ hiện ra trên màn hình, ta thêm Private key và Certificate được yêu cầu, ở đây sẽ sử dụng SSL đã đăng ký với ZeroSSL trước đó.
