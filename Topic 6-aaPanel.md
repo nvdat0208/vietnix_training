@@ -26,4 +26,12 @@
 - Sau đó, chọn Unzip để giải nén mã nguồn, chọn Confirm để bắt đầu quá trình giải nén.
 ![aapanel source4](/image/aa_source4.png)
 - Hoàn tất quá trình giải nén, bạn sẽ thấy một thư mục mới có tên là "source wordpress" đã được tạo ra. Vào thư mục này, chọn tất cả các file và nhấn vào Cut, sau đó Paste tất cả file vào đúng Document Root của website.
-![aapanel source6](/image/aa_source6.png)
+## Thêm SSL cho website
+- Vào mục Website trên aaPanel, trên các domain đã được tạo, bấm vào ``Conf`` để thêm chứng chỉ SSL
+![aapanel ssl1](/image/aa_ssl1.png)
+- mục SSL sẽ hiện ra trên màn hình, ta thêm Private key và Certificate được yêu cầu, ở đây sẽ sử dụng SSL đã đăng ký với ZeroSSL trước đó.
+![aapanel ssl2](/image/aa_ssl2.png)
+- Sau khi thêm, bấm Save and enable SSL, hệ thống sẽ báo thành công.
+![aapanel ssl3](/image/aa_ssl3.png)
+- Ra màn hình Website của aaPanel, ta sẽ thấy 2 domain đã được cấp SSL với thời hạn còn lại của SSL.
+![aapanel ssl4](/image/aa_ssl4.png)
