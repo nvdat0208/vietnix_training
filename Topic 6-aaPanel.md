@@ -35,3 +35,19 @@
 ![aapanel ssl3](/image/aa_ssl3.png)
 - Ra màn hình Website của aaPanel, ta sẽ thấy 2 domain đã được cấp SSL với thời hạn còn lại của SSL.
 ![aapanel ssl4](/image/aa_ssl4.png)
+## Upload cơ sở dữ liệu cho website
+- Vào mục Database - MySQL, chọn database cần import dữ liệu, bấm Import
+![aapanel db1](/image/aa_db1.png)
+- Để import dữ liệu cho database, ta cần upload file sql đã chuẩn bị trên máy tính, sau đó import vào database.
+![aapanel db2](/image/aa_db2.png)
+- Sau khi xong, khai báo lại cấu hình database cho domain
+	```
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=sql_laravel_datn
+	DB_USERNAME=sql_laravel_datn
+	DB_PASSWORD=ba3d87b6aff5a
+	```
+- Khởi động lại Apache và đăng nhập vào web để kiểm tra
+![aapanel wp](/image/aa_wp.png)
