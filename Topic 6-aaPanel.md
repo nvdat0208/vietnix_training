@@ -51,3 +51,11 @@
 	```
 - Khởi động lại Apache và đăng nhập vào web để kiểm tra
 ![aapanel wp](/image/aa_wp.png)
+## Cài plugins trên WordPress
+- Dùng aaPanel tải file.zip của plugin và giải nén
+![seo1](/image/seo1.png)
+- Đăng nhập vào trang wordpress admin và kích hoạt plugin
+![seo2](/image/seo2.png)
+- Đã kích hoạt thành công
+
+![seo3](/image/seo3.png)
