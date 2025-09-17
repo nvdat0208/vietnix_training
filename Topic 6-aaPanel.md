@@ -59,3 +59,8 @@
 - Đã kích hoạt thành công
 
 ![seo3](/image/seo3.png)
+### Elementor
+- Elementor là plugin page builder dành cho WordPress. Plugin này tạo các trang WordPress một cách dễ dàng bằng visual editor. Elementor sẽ giúp bạn thiết kế website trực quan và có thể dễ nhìn thấy sự thay đổi trên trang web của mình ngay lập tức. Đặc biệt, nếu không am hiểu về code, bạn cũng hoàn toàn có thể sửdụng Elementor để tạo website cho riêng mình.
+- Plugin Elementor là một giải pháp all-in-one, cho phép bạn kiểm soát mọi thứ trong việc thiết kế website trên một nền tảng duy nhất. Bạn có thể tùy chỉnh website để phù hợp với thương hiệu của mình bằng các hiệu ứng chuyển động, nhiều font chữ và background. Ngoài ra, Elementor còn có những tiện ích tùy chỉnh liên quan đến văn bản, hình ảnh, đánh giá của khách hàng, thanh trượt, biểu tượng,... được tích hợp sẵn và cực kỳ dễ sử dụng.
+
+![elementor2](/image/elementor2.png)
