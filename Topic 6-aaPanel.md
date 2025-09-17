@@ -52,6 +52,14 @@
 - Khởi động lại Apache và đăng nhập vào web để kiểm tra
 ![aapanel wp](/image/aa_wp.png)
 ## Cài plugins trên WordPress
+### Rank math SEO
+- Rank Math là một plugin SEO cho các website WordPress. Công cụ này tập trung chủ yếu vào on-page SEO và nhiều kỹ thuật SEO từ cơ bản đến nâng cao. Rank Math đã có hơn 1.000.000 lượt cài đặt với nhiều tính năng hỗ trợ SEO miễn phí. Đây được xem là một trong những Plugin SEO tốt nhất hiện nay.
+- Một số ưu điểm:
+	+ Tích hợp công cụ phân tích dữ liệu
+	+ Có sẵn Schema và Rich Snippets
+	+ Cấu hình các chức năng của Rank Math dễ dàng
+	+ Điểm SEO
+	+ Tự động tối ưu SEO
 - Dùng aaPanel tải file.zip của plugin và giải nén
 ![seo1](/image/seo1.png)
 - Đăng nhập vào trang wordpress admin và kích hoạt plugin
