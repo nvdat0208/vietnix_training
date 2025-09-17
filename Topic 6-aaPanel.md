@@ -81,3 +81,7 @@
 - Ngoài ra, Divi tích hợp một bộ công cụ giúp người dùng dễ dàng tối ưu hóa website nhằm thứ hạng cao trên các công cụ tìm kiếm. Không chỉ vậy, việc tích hợp các công cụ như WooCommerce cũng giúp người dùng có thể xây dựng các cửa hàng trực tuyến dễ dàng, thuận tiện.
 - Tương tự như elementor, vì dùng flatsome nên nếu bật divi sẽ gây ra lỗi giao diện web
 ![err theme](/image/err_theme2.png)
+### MyThemeShop
+- MyThemeShop được biết đến là thương hiệu sản xuất các theme và plugin WordPress phân phối cho người dùng trên toàn thế giới. Tính đến thời điểm hiện tại, MyThemeShop đã sáng tạo ra hơn 83 sản phẩm bao gồm 65 theme và nhiều loại plugin mang lại nhiều tính năng ưu việt.
+- Theme và plugin của MyThemeShop hỗ trợ nhiều tính năng, tương thích với mọi website và thời gian tải website nhanh chóng. Có thể thấy, được tích hợp tính năng tối ưu hóa cho các công cụ tìm kiếm là ưu điểm vượt trội mang lại doanh thu cho các theme của MyThemeShop. Các theme của MyThemeShop hoạt động rất tốt trong việc nâng cao tốc độ tải trang, và một số theme đã xếp hạng ở vị trí TOP đầu trong một số bài kiểm tra tốc độ tải trang của theme WordPress hiện nay.
+- Ta sẽ download một theme bất kỳ từ mythemeshop và upload trên trang wordpress admin. VÌ hiện tại wordpress đang dùng flatsome nên khi kích hoạt theme mới cũng sẽ bị lỗi như elementor và divi
