@@ -52,6 +52,17 @@
 - Khởi động lại Apache và đăng nhập vào web để kiểm tra
 ![aapanel wp](/image/aa_wp.png)
 ## Cài plugins trên WordPress
+## All-in-One WP Migration and Backup
+- All-in-One WP Migration là một plugin WordPress được xây dựng với mục tiêu hưởng đến người dùng không chuyên môn, cho phép di chuyền trang web WordPress với người ít hoặc không cần kỹ năng kỹ thuật.
+- Di chuyển trang web WordPress có thể là một quá trình phức tạp và tốn thời gian, đòi hỏi bạn phải sao lưu cơ sở dữ liệu, tài lên và tài xuống các tệp, thay đổi các thiết lập và cập nhật các liên kết. Nếu bạn không làm đúng, bạn có thể gặp phải các vấn đề như lỗi 404, lỗi kết nối cơ sở dữ liệu, lỗi hiển thị trang web hoặc thậm chí làm hỏng toàn bộ trang web của bạn.
+- Plugin này cho phép bạn xuất cơ sở dữ liệu, tệp phương tiện, plugin và chủ đề của bạn thành một tệp gọn gàng có định dạng .wpress. Sau đó, bạn chỉ cần giải nén tệp đó ở vị trí mới bằng tính năng “kéo và thả" dễ sử dụng trong bảng điều khiển WordPress của trang web mới của bạn. Plugin này sẽ tự động thay thế URL trang web trong quá trình nhập, để đảm bảo rằng trang web của bạn hoạt động bình thường sau khi di chuyển.
+- Xuất dữ liệu: vào All in one WP migration - Export, chọn Export to-File, tại đây ta có thể xuất toàn bộ dữ liệu web của wordpress
+![migrate1](/image/migrate1.png)
+![migrate2](/image/migrate2.png)
+- Nhập dữ liệu: vào All in one WP migration - Import, tại đây ta có thể import dữ liệu web của wordpress và triển khai 1 trang web mới.
+![migrate3](/image/migrate3.png)
+- Sao lưu: vào All in one WP migration - Backup, nơi này dùng để sao lưu lại các dữ liệu cũ cho mục đích tái sử dụng.
+![migrate4](/image/migrate4.png)
 ### Rank math SEO
 - Rank Math là một plugin SEO cho các website WordPress. Công cụ này tập trung chủ yếu vào on-page SEO và nhiều kỹ thuật SEO từ cơ bản đến nâng cao. Rank Math đã có hơn 1.000.000 lượt cài đặt với nhiều tính năng hỗ trợ SEO miễn phí. Đây được xem là một trong những Plugin SEO tốt nhất hiện nay.
 - Một số ưu điểm:
