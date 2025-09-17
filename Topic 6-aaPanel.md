@@ -64,3 +64,9 @@
 - Plugin Elementor là một giải pháp all-in-one, cho phép bạn kiểm soát mọi thứ trong việc thiết kế website trên một nền tảng duy nhất. Bạn có thể tùy chỉnh website để phù hợp với thương hiệu của mình bằng các hiệu ứng chuyển động, nhiều font chữ và background. Ngoài ra, Elementor còn có những tiện ích tùy chỉnh liên quan đến văn bản, hình ảnh, đánh giá của khách hàng, thanh trượt, biểu tượng,... được tích hợp sẵn và cực kỳ dễ sử dụng.
 
 ![elementor](/image/elementor.png)
+### Divi
+- Divi là theme WordPress được phát triển bởi Elegant Themes, đây là một trong những lựa chọn hàng đầu cho việc xây dựng và thiết kế website trên nền tảng WordPress. Không chỉ sở hữu thiết kế đẹp mắt, tốc độ tải nhanh và tối ưu cho SEO, Divi WordPress theme còn có nhiều tính năng hữu ích, đặc biệt là khả năng tạo ra template không giới hạn.
+- Divi tích hợp sẵn plugin Divi Builder và cung cấp nhiều mẫu website có sẵn từ nhiều lĩnh vực khác nhau, giúp người dùng dễ dàng tạo ra các mẫu template riêng tùy vào mục đích sử dụng. Ngoài ra, hệ thống Modules và Premade Layouts đa dạng, mang đến cho người dùng nhiều tùy chọn để sử dụng hoặc chỉnh sửa website theo ý thích.
+- Ngoài ra, Divi tích hợp một bộ công cụ giúp người dùng dễ dàng tối ưu hóa website nhằm thứ hạng cao trên các công cụ tìm kiếm. Không chỉ vậy, việc tích hợp các công cụ như WooCommerce cũng giúp người dùng có thể xây dựng các cửa hàng trực tuyến dễ dàng, thuận tiện.
+- Tương tự như elementor, vì dùng flatsome nên nếu bật divi sẽ gây ra lỗi giao diện web
+![err theme](/image/err_theme2.png)
