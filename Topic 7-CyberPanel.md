@@ -23,3 +23,5 @@
 ![cyber_ssl4](/image/cyber_ssl4.png)
 
 ![cyber_ssl5](/image/cyber_ssl5.png)
+- Thao tác tương tự với Wordpress
+![cyber_ssl6](/image/cyber_ssl6.png)
