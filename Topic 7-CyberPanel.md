@@ -47,7 +47,7 @@
 ![ls_proxy2](/image/ls_proxy2.png)
 - Cuối cùng, bạn điền đầy đủ các thông tin cần thiết cho proxy và nhấn Save:
 	- Name: proxy_pass
-	- Address: 103.90.226.73
+	- Address: localhost:5000
 	- Max Connections: 100
 	- Initial Request Timeout (sec): 60s
 	- Retry Timeout (secs): 0s
@@ -55,3 +55,29 @@
 ![ls_proxy3](/image/ls_proxy3.png)
 
 ![ls_proxy4](/image/ls_proxy4.png)
+- Cấu hình context trong virtual host, tạo 1 proxy/api cho domain
+![ls_proxy6](/image/ls_proxy6.png)
+
+![ls_proxy7](/image/ls_proxy7.png)
+
+![ls_proxy8](/image/ls_proxy8.png)
+
+![ls_proxy9](/image/ls_proxy9.png)
+### Tạo app chạy trên port 5000
+- Cài đặt Flask để tạo app
+
+	``pip install flask``
+- Tạo app với flask
+	```
+	from flask import Flask
+	app = Flask(__name__)
+	
+	@app.route('/api/')
+	def hello():
+	    return 'Hello world!'
+	
+	if __name__ == '__main__':
+	    app.run(host='127.0.0.1', port=5000)
+	```
+- Truy cập đường dẫn https://wp.datnguyen.vietnix.tech/api/ để kiểm tra thử
+![ls_proxy10](/image/ls_proxy10.png)
