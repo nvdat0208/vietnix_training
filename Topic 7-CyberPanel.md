@@ -1,3 +1,14 @@
+## Cài đặt CyberPanel
+- Chạy lệnh sau:
+	```
+	sh <(curl https://cyberpanel.net/install.sh || wget - O - https://cyberpanel.net/install.sh)
+	```
+- Hướng dẫn sẽ hiện trên màn hình, bấm 1 để xác nhận cài CyberPanel
+- Tiếp theo, chọn 1 để cài đặt CyberPanel với OpenLiteSpeed
+- Sau đó nhập Y để cài đặt CyberPanel với đầy đủ các dịch vụ: PowerDNS, Postfix và Pure-FTPd.
+- Hệ thống sẽ hỏi có muốn cài đặt Remote MySQL không, hãy nhập N để từ chối cài đăt.
+- Tiếp theo, bạn có thể chọn phiên bản CyberPanel mới nhất bằng cách nhấn Enter, mật khẩu đăng nhập mặc định là “1234567”
+- Sau khi thao tác xong, hệ thống sẽ tự động cài đặt CyberPanel lên VPS.
 ## Tạo website
 - Trên giao diện CyberPanel, chọn Website - Create website, nhập các thông tin để tạo website
 ![cyber_web1](/image/cyber_web1.png)
