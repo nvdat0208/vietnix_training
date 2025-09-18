@@ -25,3 +25,15 @@
 ![cyber_ssl5](/image/cyber_ssl5.png)
 - Thao tác tương tự với Wordpress
 ![cyber_ssl6](/image/cyber_ssl6.png)
+## Tạo proxypass openlitespeed
+### Truy cập trang quản trị OpenLiteSpeed
+- Chạy lệnh sau để lấy tài khoản
+	```
+	/usr/local/lsws/admin/misc/admpass.sh
+	```
+- Hệ thống sẽ yêu cầu nhập user và pass, tài khoản này sẽ dùng để đăng nhập openlitespeed.
+![ls1](/image/ls1.png)
+- Truy cập vào ``103.90.226.73:7080`` để đăng nhập trang quản trị
+![ls2](/image/ls2.png)
+
+![ls3](/image/ls3.png)
