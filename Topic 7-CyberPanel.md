@@ -37,3 +37,21 @@
 ![ls2](/image/ls2.png)
 
 ![ls3](/image/ls3.png)
+### Tạo proxy
+- Thực hiện các bước sau để tạo proxy:
+	- Chọn Server Configuration từ menu bên trái.
+	- Chọn tab External App.
+	- Nhấn vào dấu cộng (Add) để thêm một External App mới.
+![ls_proxy1](/image/ls_proxy1.png)
+- Tại mục Type, bạn chọn Web Server và nhấn dấu mũi tên để chuyển sang bước tiếp theo.
+![ls_proxy2](/image/ls_proxy2.png)
+- Cuối cùng, bạn điền đầy đủ các thông tin cần thiết cho proxy và nhấn Save:
+	- Name: proxy_pass
+	- Address: 103.90.226.73
+	- Max Connections: 100
+	- Initial Request Timeout (sec): 60s
+	- Retry Timeout (secs): 0s
+	- Response Buffering: No
+![ls_proxy3](/image/ls_proxy3.png)
+
+![ls_proxy4](/image/ls_proxy4.png)
