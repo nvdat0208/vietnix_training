@@ -26,3 +26,9 @@
 
 ![vesta_sour3](/image/vesta_sour3.png)
 ## Tạo database
+- Vào mục DB, tạo 2 database cho website
+![vesta_db1](/image/vesta_db1.png)
+- Thêm các thông tin sau cho database
+![vesta_db2](/image/vesta_db2.png)
+- Sau khi tạo sẽ hiển thị trên dashboard
+![vesta_db3](/image/vesta_db3.png)dashboard
