@@ -32,3 +32,8 @@
 ![vesta_db2](/image/vesta_db2.png)
 - Sau khi tạo sẽ hiển thị trên dashboard
 ![vesta_db3](/image/vesta_db3.png)
+## Đăng nhập để kiểm tra
+- Truy cập thử 2 domain để kiểm tra, ta sẽ thấy trang ``wp.datnguyen.vietnix.tech`` vào bình thường, còn domain laravel hiện tại vẫn chưa vào được do chưa đúng document root và phiên bản PHP
+![wordpress](/image/wordpress.png)
+
+![laravel](/image/laravel.png)
