@@ -18,3 +18,11 @@
 ![vesta_web3](/image/vesta_web3.png)
 - 2 website mới được tạo sẽ hiện trên dashboard
 ![vesta_web4](/image/vesta_web4.png)
+## Tải source code lên VestaCP
+- Vào File Manager, đến đường dẫn mặc định của Vesta ``/home/admin/web/laravel.datnguyen.vietnix.tech/public_html/domain/``
+![vesta_sour1](/image/vesta_sour1.png)
+- Tải source code lên thư mục tương ứng với từng domain và giải nén
+![vesta_sour2](/image/vesta_sour2.png)
+
+![vesta_sour3](/image/vesta_sour3.png)
+## Tạo database
