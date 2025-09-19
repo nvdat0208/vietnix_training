@@ -1,5 +1,5 @@
 ## Cài đặt VestaCP
-- truy cập vào ``https://vestacp.com/install/`` và điền các thông tin sau, sau đó bấm Generate Install Command để nhận được các lệnh cài đặt Vesta.
+- Truy cập vào ``https://vestacp.com/install/`` và điền các thông tin sau, sau đó bấm Generate Install Command để nhận được các lệnh cài đặt Vesta.
 ![vesta1](/image/vesta1.png)
 
 ![vesta2](/image/vesta2.png)
