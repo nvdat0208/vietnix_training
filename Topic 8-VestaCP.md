@@ -31,4 +31,4 @@
 - Thêm các thông tin sau cho database
 ![vesta_db2](/image/vesta_db2.png)
 - Sau khi tạo sẽ hiển thị trên dashboard
-![vesta_db3](/image/vesta_db3.png)dashboard
+![vesta_db3](/image/vesta_db3.png)
