@@ -9,3 +9,12 @@
 ![vesta4](/image/vesta4.png)
 
 ![vesta5](/image/vesta5.png)
+## Tạo domain cho website
+- Tạo 2 domain cho website
+![vesta_web1](/image/vesta_web1.png)
+- Thêm các thông tin cho website
+![vesta_web2](/image/vesta_web2.png)
+- Thêm chứng chỉ SSL, sau đó bấm Add để tạo
+![vesta_web3](/image/vesta_web3.png)
+- 2 website mới được tạo sẽ hiện trên dashboard
+![vesta_web4](/image/vesta_web4.png)
