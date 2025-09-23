@@ -48,7 +48,9 @@
 	```
 - Cài đặt các thư viện cần thiết để biên dịch php8.1
 	```
-	apt install build-essential autoconf bison re2c libxml2-dev libsqlite3-dev 			libonig-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libwebp-dev 				libfreetype6-dev libzip-dev libssl-dev pkg-config
+	apt install build-essential autoconf bison re2c libxml2-dev libsqlite3-dev
+ libonig-dev libcurl4-openssl-dev libjpeg-dev libpng-dev libwebp-dev
+ libfreetype6-dev libzip-dev libssl-dev pkg-config
 	```
 - Thực hiện biên dịch php8.1
 	```
