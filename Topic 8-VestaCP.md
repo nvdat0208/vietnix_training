@@ -73,3 +73,33 @@
 	``php -v``
 
 	![php8.1](/image/php8.1.png)
+- Sao chép các file cấu hình mặc định
+	```
+	cd /usr/local/src/php-8.1.30
+	cp sapi/fpm/php-fpm /usr/local/php81/sbin/
+	cp /usr/local/src/php-8.1.30/php.ini-production /usr/local/php81/lib/php.ini
+	cp /usr/local/src/php-8.1.30/sapi/fpm/php-fpm.conf /usr/local/php81/etc/php-fpm.conf
+	cp /usr/local/src/php-8.1.30/sapi/fpm/www.conf /usr/local/php81/etc/php-fpm.d/www.conf
+	```
+- Tạo systemd service cho php-fpm
+	```
+	nano /etc/systemd/system/php81-fpm.service
+	
+	[Unit]
+	Description=The PHP 8.1 FastCGI Process Manager
+	After=network.target
+	
+	[Service]
+	Type=simple
+	ExecStart=/usr/local/php81/sbin/php-fpm --nodaemonize --fpm-config /usr/local/php81/etc/php-fpm.conf
+	ExecReload=/bin/kill -USR2 $MAINPID
+	Restart=always
+	
+	[Install]
+	WantedBy=multi-user.target
+	
+	systemctl daemon-reexec
+	systemctl enable php81-fpm
+	systemctl start php81-fpm
+	systemctl status php81-fpm
+	```
