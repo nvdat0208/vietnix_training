@@ -36,3 +36,18 @@
 ![allow_ip9](/image/allow_ip9.png)
 - Tương tự, nếu chặn IP ta sẽ chọ Block the connection ở mục Action
 ![allow_ip10](/image/allow_ip10.png)
+## Cài đặt web server IIS
+- Vào Dashboard của Server Manager, chọn Add roles and features
+![iis1](/image/iis1.png)
+- Tiếp tục bấm Next cho tới mục Select server roles
+![iis2](/image/iis2.png)
+
+![iis3](/image/iis3.png)
+
+![iis4](/image/iis4.png)
+- Bấm chọn vào Web server(IIS), sau đó bấm Next đến Installation progress, chọn Install, chờ cài đặt
+![iis5](/image/iis5.png)
+
+![iis6](/image/iis6.png)
+
+![iis7](/image/iis7.png)
