@@ -170,4 +170,4 @@
 
 	``v-add-letsencrypt-domain admin laravel.datnguyen.vietnix.tech``
 - Sau khi tạo xong, ssl sẽ nằm trong /home/admin/conf/web# , gồm 4 file: .key, .pem, .crt, .ca
-![letsencrypt](letsencrypt.png)
+![letsencrypt](/image/letsencrypt.png)
