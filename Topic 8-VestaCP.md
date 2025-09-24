@@ -165,3 +165,9 @@
 	```
 - Khởi động lại Nginx và Apache, truy cập lại laravel để kiểm tra
 ![laravel](/image/laravel.png)
+## Tạo free SSL trên vestaCP với command line
+- Để tạo free SSL trên vestaCP, ta chạy lệnh:
+
+	``v-add-letsencrypt-domain admin laravel.datnguyen.vietnix.tech``
+- Sau khi tạo xong, ssl sẽ nằm trong /home/admin/conf/web# , gồm 4 file: .key, .pem, .crt, .ca
+![letsencrypt](letsencrypt.png)
