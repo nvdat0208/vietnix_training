@@ -121,4 +121,47 @@
 	
 	# sửa lại thành
 	php_admin_value open_basedir /home/admin/web/laravel.datnguyen.vietnix.tech:/home/admin/tmp
-	``` 
+	```
+- Trên cấu hình Nginx, ta chỉnh lại cấu hình ProxyPass
+	```
+	# Cấu hình mặc định
+	location / {
+        proxy_pass      https://103.90.226.73:8443;
+        location ~* ^.+\.(jpeg|jpg|png|gif|bmp|ico|svg|tif|tiff|css|js|htm|html|ttf|otf|webp|woff|txt|csv|rtf|doc|docx|xls|xlsx|ppt|pptx|odf|odp|ods|odt|pdf|psd|ai|eot|eps|ps|zip|tar|tgz|gz|rar|bz2|7z|aac|m4a|mp3|mp4|ogg|wav|wma|3gp|avi|flv|m4v|mkv|mov|mpeg|mpg|wmv|exe|iso|dmg|swf)$ {
+            root           /home/admin/web/laravel.datnguyen.vietnix.tech/public_html;
+            access_log     /var/log/apache2/domains/laravel.datnguyen.vietnix.tech.log combined;
+            access_log     /var/log/apache2/domains/laravel.datnguyen.vietnix.tech.bytes bytes;
+            expires        max;
+            try_files      $uri @fallback;
+        }
+    }
+	```
+- Chỉnh lại như sau
+	```
+	# Nginx xử lý file tĩnh
+    location ~* \.(jpg|jpeg|png|gif|bmp|ico|svg|tif|tiff|css|js|woff|woff2|ttf|eot|otf|mp4|mp3|wav|pdf|zip|tar|gz|rar|7z)$ {
+        access_log off;
+        expires max;
+    }
+
+    # Đẩy request cho Apache (8443)
+    location / {
+        proxy_pass https://103.90.226.73:8443;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_set_header X-Forwarded-Proto $scheme;
+    }
+	```
+
+- Khai báo cấu hình database
+	```
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1
+	DB_PORT=3306
+	DB_DATABASE=admin_laravel
+	DB_USERNAME=admin_laravel
+	DB_PASSWORD=P@ssW0rd
+	```
+- Khởi động lại Nginx và Apache, truy cập lại laravel để kiểm tra
+![laravel](/image/laravel.png)
