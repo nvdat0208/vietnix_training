@@ -1,4 +1,4 @@
-## Thực hiện cho phép/chặn port trên windows
+## Thực hiện cho phép/chặn port trên windows firewall
 - Truy cập Server Manager - Local Server - Windows Firewall
 ![allow_port1](/image/allow_port1.png)
 - Tại giao diện Windows firewall, chọn Advanced Settings
@@ -15,3 +15,4 @@
 ![allow_port7](/image/allow_port7.png)
 - Cấu hình chặn port tương tự như trên, ở mục Action ta sẽ chọn Block the connection
 ![allow_port8](/image/allow_port8.png)
+## Thực hiện cho phép/ IP trên windows firewall
