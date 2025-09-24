@@ -103,3 +103,22 @@
 	systemctl start php81-fpm
 	systemctl status php81-fpm
 	```
+- Kiểm tra php81 đang dùng unix socket hay tcp port, ở đây php81 đang dùng tcp port nên ta khối module dưới vào cấu hình apache
+	```
+	ss -ltnp | grep 9000
+	```
+	```
+ 	cd /home/admin/conf/web/domain.apache2.ssl.conf
+	<IfModule proxy_fcgi_module>
+	    <FilesMatch \.php$>
+	        SetHandler "proxy:fcgi://127.0.0.1:9000"
+	    </FilesMatch>
+	</IfModule>
+	```
+- Chỉnh lại phần open_basedir để cấp quyền truy cập vào source code của laravel
+	```
+	php_admin_value open_basedir /home/admin/web/laravel.datnguyen.vietnix.tech/public_html:/home/admin/tmp
+	
+	# sửa lại thành
+	php_admin_value open_basedir /home/admin/web/laravel.datnguyen.vietnix.tech:/home/admin/tmp
+	``` 
