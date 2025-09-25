@@ -51,3 +51,20 @@
 ![iis6](/image/iis6.png)
 
 ![iis7](/image/iis7.png)
+## Cài đặt PHP
+- Ta cài đặt thêm CGI và Management console để chạy PHP
+![php1](/image/php1.png)
+- Lên trang chủ PHP, tải phiên bản PHP7.4 (NTS) cho wordpress và giải nén ở ``C:\PHP\``
+![php2](/image/php2.png)
+
+![php3](/image/php3.png)
+- Thêm PHP vào biến môi trường của windows
+![php4](/image/php4.png)
+
+![php5](/image/php5.png)
+
+![php6](/image/php6.png)
+- Thêm php-cgi trên ISS
+![php7](/image/php7.png)
+
+![php8](/image/php8.png)
