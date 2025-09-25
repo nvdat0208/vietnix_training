@@ -81,3 +81,10 @@
 ![sql5](/image/sql5.png)
 
 ![sql6](/image/sql6.png)
+- Vào Mysql command line client, tạo database cho wordpress
+	```
+	CREATE DATABASE wordpress CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+	CREATE USER 'wpadmin'@'localhost' IDENTIFIED BY 'P@ssW0rd';
+	GRANT ALL PRIVILEGES ON wordpress.* TO 'wpadmin'@'localhost';
+	FLUSH PRIVILEGES;
+	```
