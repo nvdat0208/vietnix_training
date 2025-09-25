@@ -94,3 +94,43 @@
 	GRANT ALL PRIVILEGES ON wordpress.* TO 'wpadmin'@'localhost';
 	FLUSH PRIVILEGES;
 	```
+## Cài đặt wordpress
+- Tải wordpress về thư mục chứa source sau đó giải nén
+![wp1](/image/wp1.png)
+- Sửa 1 vài cấu hình trong C:\PHP\php.ini , bỏ dấu ";" cho các dòng sau
+	```
+	extension=mysqli
+	extension=mbstring
+	extension=openssl
+	extension_dir = "ext"
+	```
+- Khai báo thông tin database vào wp-config.php
+	```
+	define( 'DB_NAME', 'wordpress' );
+
+	/** Database username */
+	define( 'DB_USER', 'wpadmin' );
+	
+	/** Database password */
+	define( 'DB_PASSWORD', 'P@ssW0rd' );
+	
+	/** Database hostname */
+	define( 'DB_HOST', 'localhost' );
+	
+	/** Database charset to use in creating database tables. */
+	define( 'DB_CHARSET', 'utf8' );
+	
+	/** The database collate type. Don't change this if in doubt. */
+	define( 'DB_COLLATE', 'utf8mb4_unicode_ci' );
+	```
+- Truy cập website sẽ hiện giao diện của wordpress
+![wp1](/image/wp1.png)
+- Tiếp tục import SSL cho trang web, windows không thể import file .key và .crt nên ta cần chuyển qua .pfx
+
+	``openssl pkcs12 -export -out windows.pfx -inkey private.key -in certificate.crt -certfile ca_bundle.crt``
+- Ta sẽ có 1 file .pfx để import cho windows, vào IIS Manager - chọn wordpress site - Server Certificates - Actions - import
+![pfx1](/image/pfx1.png)
+- Chỉnh lại phần Binding của wordpress site cho phép truy cập ``https``
+![pfx2](/image/pfx2.png)
+- Truy cập vào website để kiểm tra
+![pfx3](/image/pfx3.png)
