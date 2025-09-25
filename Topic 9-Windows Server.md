@@ -51,6 +51,12 @@
 ![iis6](/image/iis6.png)
 
 ![iis7](/image/iis7.png)
+- Cấu hình website cho wordpress, Dashboard - Tool - IIS Manager - Click phải vào web server tạo 1 site mới.
+![iis8](/image/iis8.png)
+- Ở mục Directory browsing, chọn enable
+![iis9](/image/iis9.png)
+- Ở mục Default document, cho index.php lên đầu tiên
+![iis10](/image/iis10.png)
 ## Cài đặt PHP
 - Ta cài đặt thêm CGI và Management console để chạy PHP
 ![php1](/image/php1.png)
