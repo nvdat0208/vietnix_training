@@ -70,7 +70,7 @@
 ![php8](/image/php8.png)
 ## Cài đặt MySQL server
 - Vào trang chủ MySQL, tải và cài đặt MySQL Server
-![sql1](/image/sql.png)
+![sql1](/image/sql1.png)
 
 ![sql2](/image/sql2.png)
 
@@ -78,6 +78,6 @@
 
 ![sql4](/image/sql4.png)
 
-![sql5](/image/sq5.png)
+![sql5](/image/sql5.png)
 
 ![sql6](/image/sql6.png)
