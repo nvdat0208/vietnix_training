@@ -307,3 +307,13 @@ GRANT ALL PRIVILEDGES ON laravel.* TO 'user_laravel'@'localhost';
 GRANT ALL PRIVILEDGES ON wordpress.* TO 'user_wordpress'@'localhost';
 FLUSH PRIVILEGES;
 ```
+## PHP 7.x
+```
+sudo apt update
+sudo apt install php7.4 php7.4-fpm php7.4-mysql php7.4-xml php7.4-mbstring php7.4-curl
+```
+```
+<FilesMatch \.php$>
+SetHandler "proxy:unix:/run/php/php7.4-fpm.sock|fcgi://localhost/"
+</FilesMatch>
+```
