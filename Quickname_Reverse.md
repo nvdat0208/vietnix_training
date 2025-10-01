@@ -324,8 +324,8 @@ systemctl restart nginx
 ## Import data
 ```
 mysql -u root -p
-CREATE DATABASES wordpress;
-CREATE DATABASES laravel;
+CREATE DATABASE wordpress;
+CREATE DATABASE laravel;
 ```
 ```
 CREATE USER 'user_laravel'@'localhost' IDENTIFIED BY 'P@ssW0rd';
