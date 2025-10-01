@@ -51,7 +51,7 @@ scp ca_bundle.crt certificate.crt private.key root@103.90.226.73:/etc/wp_ssl/
 scp ca_bundle.crt certificate.crt private.key root@103.90.226.73:/etc/laravel_ssl/
 ```
 ```
-chmod 600 /etc/ssl/lavarel/private.key
+chmod 600 private.key
 ```
 ## Nginx
 ```
