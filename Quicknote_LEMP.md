@@ -118,7 +118,7 @@ nano /etc/nginx/sites-available/wordpress
 server {
     listen 80;
     listen [::]:80;
-    server_name laravel.datnguyen.vietnix.tech;
+    server_name wp.datnguyen.vietnix.tech;
     return 301 https://$host$request_uri;
 }
 server {
