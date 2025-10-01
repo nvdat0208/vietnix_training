@@ -249,6 +249,9 @@ libtool --finish /usr/lib/apache2/modules
 vi /etc/apache2/mods-available/rpaf.load
 ```
 ```
+LoadModule rpaf_module /usr/lib/apache2/modules/mod_rpaf.so
+```
+```
 vi /etc/apache2/mods-available/rpaf.conf
 ```
 ```
