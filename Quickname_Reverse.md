@@ -114,7 +114,7 @@ vi etc/apache2/sites-available/vhost-laravel.conf
  </VirtualHost>
 ```
 ```
-vi /etc/apache2/sites-available/vhost-wordpress.conf
+vi /etc/apache2/sites-available/vhost-wp.conf
 ```
 ```
 <VirtualHost *:8080>
@@ -145,12 +145,12 @@ vi /etc/apache2/sites-available/vhost-wordpress.conf
  </VirtualHost>
 ```
 ```
-a2ensite vhost-laravel.conf
-a2ensite vhost-wordpress.conf
-```
-```
 a2enmod ssl
 systemctl restart apache2
+```
+```
+a2ensite vhost-laravel.conf
+a2ensite vhost-wp.conf
 ```
 ## Cấu hình Nginx
 ```
@@ -221,7 +221,7 @@ server {
 ```
 ```
 ln -s /etc/nginx/sites-available/vhost-laravel.conf /etc/nginx/sites-enabled/
-ln -s /etc/nginx/sites-available/vhost-wordpress.conf /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/vhost-wp.conf /etc/nginx/sites-enabled/
 systemctl restart nginx
 ```
 ## cấu hình mod_rpaf
