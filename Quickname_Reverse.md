@@ -334,6 +334,22 @@ GRANT ALL PRIVILEGES ON laravel.* TO 'user_laravel'@'localhost';
 GRANT ALL PRIVILEGES ON wordpress.* TO 'user_wordpress'@'localhost';
 FLUSH PRIVILEGES;
 ```
+```
+UPDATE Sa3QIZ_posts
+SET post_content = REPLACE(post_content, 'https://linhlt.id.vn', 'https://wp.datnguyen.vietnix.tech');
+```
+```
+UPDATE Sa3QIZ_postmeta
+SET meta_value = REPLACE(meta_value, 'https://linhlt.id.vn', 'https://wp.datnguyen.vietnix.tech');
+```
+```
+UPDATE Sa3QIZ_options
+SET option_value = REPLACE(option_value, 'https://linhlt.id.vn', 'https://wp.datnguyen.vietnix.tech');
+```
+```
+UPDATE Sa3QIZ_usermeta
+SET meta_value = REPLACE(meta_value, 'https://linhlt.id.vn', 'https://wp.datnguyen.vietnix.tech');
+```
 ## PHP 7.x
 ```
 sudo apt update
