@@ -330,8 +330,8 @@ CREATE DATABASE laravel;
 ```
 CREATE USER 'user_laravel'@'localhost' IDENTIFIED BY 'P@ssW0rd';
 CREATE USER 'user_wordpress'@'localhost' IDENTIFIED BY 'P@ssW0rd';
-GRANT ALL PRIVILEDGES ON laravel.* TO 'user_laravel'@'localhost';
-GRANT ALL PRIVILEDGES ON wordpress.* TO 'user_wordpress'@'localhost';
+GRANT ALL PRIVILEGES ON laravel.* TO 'user_laravel'@'localhost';
+GRANT ALL PRIVILEGES ON wordpress.* TO 'user_wordpress'@'localhost';
 FLUSH PRIVILEGES;
 ```
 ## PHP 7.x
