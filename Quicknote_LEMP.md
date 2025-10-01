@@ -158,6 +158,9 @@ systemctl restart nginx
 cd /var/www/
 ```
 ```
+apt install composer
+```
+```
 composer create-project --prefer-dist laravel/laravel laravel
 ```
 ```
