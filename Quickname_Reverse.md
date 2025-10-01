@@ -220,8 +220,6 @@ server {
  }
 ```
 ```
-ln -s /etc/nginx/sites-available/vhost-laravel.conf /etc/nginx/sites-enabled/
-ln -s /etc/nginx/sites-available/vhost-wp.conf /etc/nginx/sites-enabled/
 systemctl restart nginx
 ```
 ## cấu hình mod_rpaf
