@@ -321,7 +321,6 @@ ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 nginx -t
 systemctl restart nginx
 ```
-```
 ## Import data
 ```
 mysql -u root -p
