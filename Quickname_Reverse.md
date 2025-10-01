@@ -234,13 +234,16 @@ cd mod_rpaf-stable
 apt install libtool-bin
 ```
 ```
-libtool --finish /usr/lib/apache2/modules
+apt install apache2-dev
 ```
 ```
 make
 ```
 ```
 make install
+```
+```
+libtool --finish /usr/lib/apache2/modules
 ```
 ```
 vi /etc/apache2/mods-available/rpaf.load
