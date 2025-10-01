@@ -97,16 +97,13 @@ apt install phpmyadmin -y
 ```
 ## Wordpress
 ```
-cd /tmp
+cd /var/www
 ```
 ```
 wget https://wordpress.org/latest.tar.gz
 ```
 ```
 tar -xzvf latest.tar.gz
-```
-```
-mv wordpress /var/www/
 ```
 ```
 chown -R www-data:www-data /var/www/wordpress
