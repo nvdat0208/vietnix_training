@@ -37,7 +37,25 @@ systemctl restart apache2
 ```
 vi /etc/apache2/sites-available/vhost-default.conf
 ```
-## Cấu hình Nginx
+```
+<VirtualHost *:8080>
+     ServerName default-server
+     DocumentRoot /var/www/html
+ 
+     <Directory /var/www/html>
+         AllowOverride All
+         Require all granted
+     </Directory>
+ 
+     # Bạn có thể thêm một tệp index.html đơn giản
+     DirectoryIndex info.php
+ </VirtualHost>
+```
+```
+apache2ctl configtest
+systemctl restart apache2
+```
+## Cấu hình Apache
 ```
 echo "<?php phpinfo();?>" | tee /var/www/html/info.php
 ```
