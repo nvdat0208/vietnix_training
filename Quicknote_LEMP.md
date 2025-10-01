@@ -19,15 +19,15 @@ nano ~/.bashrc
 source ~/.bashrc
 ```
 ```
-alias restart-nginx='systemctl restart nginx'  
-alias status-nginx='systemctl status nginx'  
-alias restart-apache2='systemctl restart apache2'  
-alias status-apache2='systemctl status apache2'  
-alias status-mariadb='systemctl status mariadb'  
-alias restart-mariadb='systemctl restart mariadb'  
-alias status-php8.1='systemctl status php8.1-fpm'  
-alias restart-php8.1='systemctl restart php8.1-fpm'  
-alias status-php7.4='systemctl status php7.4-fpm'  
+alias restart-nginx='systemctl restart nginx'
+alias status-nginx='systemctl status nginx'
+alias restart-apache2='systemctl restart apache2'
+alias status-apache2='systemctl status apache2'
+alias status-mariadb='systemctl status mariadb'
+alias restart-mariadb='systemctl restart mariadb'
+alias status-php8.1='systemctl status php8.1-fpm'
+alias restart-php8.1='systemctl restart php8.1-fpm'
+alias status-php7.4='systemctl status php7.4-fpm'
 alias restart-php7.4='systemctl restart php7.4-fpm'
 ```
 ## Net tools
